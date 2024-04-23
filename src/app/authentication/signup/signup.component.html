@@ -1,0 +1,41 @@
+<div class="text-center my-5">
+<h3>signup</h3>
+<hr>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label">UserName </label>
+        <input class="form-control my-2" type="text" formControlName="userName">
+        <small class="text-danger" *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched">UserName is required.</small>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password </label>
+        <input class="form-control my-2" type="password" formControlName="password">
+        <small class="text-danger" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">Password is required.</small>
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email </label>
+        <input class="form-control my-2" type="email" formControlName="email">
+        <small class="text-danger" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">Email is required.</small>
+
+    </div>
+
+    
+
+    <div class="mb-3">
+        <label class="form-label">birthDate</label>
+        <input class="form-control my-2" type="date" formControlName="birthDate">
+        <small class="text-danger" *ngIf="signupForm.get('birthDate')?.invalid && signupForm.get('birthDate')?.touched">birthDate is required.</small>
+
+    </div >
+
+    <button class="btn btn-primary my-2" type="submit" [disabled]="signupForm.invalid">Submit</button>
+
+</form>
+<div class="mb-3">
+    <label>already have an account?</label>
+    <button class="btn btn-primary mx-4" [routerLink]="['']">log in</button>
+</div>
+</div>
