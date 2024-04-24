@@ -32,6 +32,7 @@ export class SignupComponent implements OnInit {
  }
    onSubmit(){
     if(this.signupForm.valid){
+
       console.log("valid form")
       let id = Date.now().toString();
       let user:User = this.signupForm.value;

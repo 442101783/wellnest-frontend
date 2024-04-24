@@ -1,15 +1,20 @@
-<div class="text-center my-5">
-<h3>signup</h3>
+<app-home></app-home>
+
+
+<div class="signup-container">
+<h3>Sign Up</h3>
 <hr>
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-        <label class="form-label">UserName </label>
+        <label class="form-label">Username </label>
         <input class="form-control my-2" type="text" formControlName="userName">
         <small class="text-danger" *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched">UserName is required.</small>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Password </label>
+        <input class="form-control my-2" type="password" formControlName="password">
+        <label class="form-label">Confirm Password </label>
         <input class="form-control my-2" type="password" formControlName="password">
         <small class="text-danger" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">Password is required.</small>
 
@@ -25,17 +30,17 @@
     
 
     <div class="mb-3">
-        <label class="form-label">birthDate</label>
+        <label class="form-label">Birth Date</label>
         <input class="form-control my-2" type="date" formControlName="birthDate">
         <small class="text-danger" *ngIf="signupForm.get('birthDate')?.invalid && signupForm.get('birthDate')?.touched">birthDate is required.</small>
 
     </div >
 
-    <button class="btn btn-primary my-2" type="submit" [disabled]="signupForm.invalid">Submit</button>
+    <button class="btn btn-dark my-2" type="submit" [disabled]="signupForm.invalid">Submit</button>
 
 </form>
 <div class="mb-3">
-    <label>already have an account?</label>
-    <button class="btn btn-primary mx-4" [routerLink]="['']">log in</button>
+    <label>Already have an account?</label>
+    <button class="btn btn-dark mx-4" [routerLink]="['/login']">Login</button>
 </div>
 </div>

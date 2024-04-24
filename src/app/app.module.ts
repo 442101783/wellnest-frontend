@@ -7,6 +7,8 @@ import { AppointmentModule } from './appointment/appointment.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from './home/home.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,8 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppointmentModule,
     FormsModule,
     SharedModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    BrowserAnimationsModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
