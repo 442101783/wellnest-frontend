@@ -16,6 +16,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule
+  ],
+  exports:[
+    LoginComponent,
+    SignupComponent
   ]
 })
 export class AuthenticationModule { }
