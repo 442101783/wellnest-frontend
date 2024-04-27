@@ -18,26 +18,15 @@ constructor(private http:HttpClient){
   
 }
 
-signup(user:User): boolean{
-//need checking if the user already exist
-  let signupAttempt = false;
-  user.id = Date.now().toString();
-
-
-  this.users.push(user);
-  localStorage.setItem("users",JSON.stringify(this.users));
-
-  signupAttempt = true;
-  return signupAttempt
+signup(user:User): Observable<any>{
+return this.http.post<any>(this.apiUrl,JSON.stringify(user))
 }
 
-login(email:string,password:string): boolean{
-let loginAttempt = false
-if(this.users.find(u => u.email === email && u.password === password)){
-loginAttempt = true
-return loginAttempt
-}
-return loginAttempt
+login(value:any): Observable<any>{
+  console.log(JSON.stringify(value))
+
+  return this.http.get<any>(this.apiUrl+"/login/",value)
+
 }
 }
 
