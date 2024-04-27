@@ -1,7 +1,32 @@
-<div class="text-center">
-    <h2 class="mb-4">wellcome to wellnest clinic</h2>
-    
-<button class="btn btn-primary mx-2" [routerLink]="['/new']">book new appointment</button>
-<button class="btn btn-primary mx-2" [routerLink]="['/list']">view appointment</button>
 
-</div>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="#" class="nav_logo">WellNest</a>
+        
+                <ul class="nav_items">
+                    <li class="nav_item">
+                        <a href="" class="nav_link">Home</a>
+                        <a href="#" class="nav_link">Services</a>
+                        <a href="#" class="nav_link">Contact Us</a>
+        
+                    </li>
+                </ul>
+        
+                <button [routerLink]="['#']" type="button" class="button">Profile</button>
+            </nav>
+        </header>
+        
+        <section class="home">
+
+            <button class="btn btn-light mx-2" [routerLink]="['/new']">Book New Appointment</button>
+            <button class="btn btn-light mx-2" [routerLink]="['/list']">View Appointments</button>
+        
+        </section>
+
+
+
+        </body>
+        
+        
+

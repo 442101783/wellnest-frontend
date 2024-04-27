@@ -1,12 +1,16 @@
-<h3 class="mt-5 mb-3">upcoming appointments</h3>
+<app-patient-home-page></app-patient-home-page>
 
+<div class="appointment-container">
+<h3 class="mt-5 mb-3">Upcoming Appointments</h3>
+
+<div class="table">
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>time</th>
-            <th>date</th>
-            <th>department</th>
-            <th>doctor</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Department</th>
+            <th>Doctor</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +26,7 @@
         </tr>
     </tbody>
 </table>
+</div>
 
 <ul *ngIf="appointments.length; else noAppointments">
 
@@ -30,3 +35,4 @@
 <ng-template #noAppointments>
     <p>No appointments available.</p>
 </ng-template>
+</div>

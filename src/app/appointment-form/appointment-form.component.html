@@ -2,19 +2,19 @@
 <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit">
 
     <div>
-        <label class="form-label mx-2">choose a department</label>
+        <label class="form-label mx-2">Choose a department</label>
         <select class="option mx-2" id="department" formControlName="department">
             <option value="family">Family</option>
             <option value="cardiology">Cardiology</option>
-            <option value="general">general</option>
+            <option value="general">General</option>
         </select>
         <div *ngIf="appointmentForm.get('department')?.invalid 
         && appointmentForm.get('department')?.touched">
-        department is required</div>
+        Department is required</div>
     </div>
 
     <div>
-        <label class="form-label">pick a date</label>
+        <label class="form-label">Pick a date</label>
         <input class="form-control my-2" type="date" formControlName="date">
         <div *ngIf="appointmentForm.get('date')?.invalid 
         && appointmentForm.get('date')?.touched">
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-        <label class="form-label mx-2">pick a time</label>
+        <label class="form-label mx-2">Pick a time</label>
         <select id="time" formControlName="time">
             <option value="8:00">8:00</option>
             <option value="9:00">9:00</option>
@@ -37,7 +37,7 @@
         </select>
         <div *ngIf="appointmentForm.get('time')?.invalid 
         && appointmentForm.get('time')?.touched">
-        time is required</div>
+        Time is required</div>
     </div>
 
 
