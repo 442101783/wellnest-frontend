@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { FormBuilder,FormGroup,Validators,AbstractControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,18 +23,43 @@ export class SignupComponent implements OnInit {
   //password > 8 letters
   //contain capital,number,small,sympol
   this.signupForm = this.formBuilder.group({
-    userName:['',Validators.required],
-    password:['',[Validators.required,Validators.minLength(6)]],
+    fName:['',Validators.required],
+    lName:['',Validators.required],
+    phoneNumber:['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    password:['',[Validators.required,Validators.minLength(8),this.checkPassword()]],
+   
     email:['',[Validators.required,Validators.email]],
+    gender:['',Validators.required],
     birthDate:['',Validators.required],
 
  })
  }
+
+ checkPassword() {
+  return (control: AbstractControl) => {
+    const value = control.value;
+    const hasCapital = /[A-Z]/.test(value);
+    const hasSmall = /[a-z]/.test(value);
+    const hasSymbol = /[$@$!%*?&]/.test(value);
+    const isLengthValid = value && value.length >= 8;
+
+    if (!hasCapital) {
+      return { missingCapital: true, message: 'Password must contain at least one capital letter.' };
+    } else if (!hasSmall) {
+      return { missingSmall: true, message: 'Password must contain at least one small letter.' };
+    } else if (!hasSymbol) {
+      return { missingSymbol: true, message: 'Password must contain at least one symbol.' };
+    } else if (!isLengthValid) {
+      return { minLength: true, message: 'Password must be at least 8 characters long.' };
+    }
+
+    return null;
+  };
+}
    onSubmit(){
     if(this.signupForm.valid){
 
       console.log("valid form")
-      let id = Date.now().toString();
       let user:User = this.signupForm.value;
 
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;

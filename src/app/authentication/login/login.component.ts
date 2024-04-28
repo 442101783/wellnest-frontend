@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit{
   
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email:['',Validators.required],
+      phoneNumber:['', [Validators.required, Validators.pattern('[0-9]{10}')]],
       password:['',[Validators.required,Validators.minLength(8)]]
     })
   }

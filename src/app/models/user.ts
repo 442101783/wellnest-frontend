@@ -1,7 +1,9 @@
 export interface User {
    id:string,
-   userName:string,
+   fName:string,
+   lName:string,
    password:string,
-   email:string,
+   phoneNumber:number,
    birthDate:Date,
+   gender:string
 }
