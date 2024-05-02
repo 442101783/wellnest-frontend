@@ -3,7 +3,7 @@ import { AuthenticationService } from '../authentication.service';
 import { FormBuilder,FormControl,FormGroup,Validator, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { HttpResponse } from '@angular/common/http';
+import { HttpRequest, HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private formBuilder:FormBuilder,
-    private authenticationService:AuthenticationService,
+    private authService:AuthenticationService,
     private router:Router,
     private activatedRoute:ActivatedRoute){}
   
@@ -29,14 +29,21 @@ export class LoginComponent implements OnInit{
   onSubmit(): void{
 
     if(this.loginForm.valid){
-  console.log(JSON.stringify(this.loginForm.value))
 
 
   let user:User = this.loginForm.value;
-  this.authenticationService.login(this.loginForm.value).subscribe(
+  this.authService.login(user.phoneNumber,user.password).subscribe(
     (response) => {
     if(response){
-      this.router.navigate(['/patient-page'])
+      this.authService.getPatient().subscribe(
+        (patient) => {
+          this.router.navigate(['/patient-page/'+patient.patientID])
+        },
+        (error) => {
+          console.error(error)
+          alert("error retrieving patient data")
+        }
+      )
     } else{
       console.log("failed to log in")
       alert("failed to login")

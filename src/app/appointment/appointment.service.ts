@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor';
+import { AuthenticationService } from '../authentication/authentication.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +14,15 @@ export class AppointmentService {
 private apiUrl = "http://localhost:3001"
 private appointments: Appointment[] = [];
 
-constructor(private http:HttpClient){}
+constructor(private http:HttpClient,private authService:AuthenticationService){}
 
 getAppointments(): Observable<Appointment[]> {
-  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments")
+  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments/"+this.authService.getToken)
 
 }
 
 getAppointment(id:string): Observable<Appointment> {
-  return this.http.get<Appointment>(this.apiUrl+ "/appointment/"+id)
+  return this.http.get<Appointment>(this.apiUrl+ "/appointment/"+this.authService.getToken)
 
 }
 

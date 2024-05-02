@@ -11,10 +11,10 @@ const routes: Routes = [
   {path:"", component: HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"signup",component:SignupComponent},
-  {path:"patient-page",component:PatientHomePageComponent},
+  {path:"patient-page/:PatientID",component:PatientHomePageComponent},
   {path:"new",component:AppointmentFormComponent},
   {path:"list",component:AppointmentListComponent},
-  {path:"edit/:id",component:AppointmentFormComponent}
+  {path:"edit/:appointmentID",component:AppointmentFormComponent}
 
 
 ];
