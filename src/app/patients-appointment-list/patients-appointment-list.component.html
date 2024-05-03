@@ -1,1 +1,35 @@
-<p>patients-appointment-list works!</p>
+
+<div class="appointment-container">
+    <h3 class="mt-5 mb-3">Upcoming Appointments</h3>
+    
+    <div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Patient</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of patientAppointments">
+                <td>{{appointment.time}}</td>
+                <td>{{appointment.date}}</td>
+                <td>{{appointment.patientName}}</td>
+
+                <td>
+                    <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/edit']">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    <ul *ngIf="patientAppointments.length; else noAppointments">
+    
+    </ul>
+    
+    <ng-template #noAppointments>
+        <p>No appointments available.</p>
+    </ng-template>
+    </div>

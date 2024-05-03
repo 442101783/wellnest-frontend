@@ -10,7 +10,7 @@ import { Appointment } from '../models/appointment';
 export class AppointmentListComponent implements OnInit {
 
 appointments:Appointment[] = [];
-patientsAppointments: Appointment [] = [];
+
 
 constructor(private appointmentService :AppointmentService){}
   
