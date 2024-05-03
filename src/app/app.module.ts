@@ -9,9 +9,11 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorHomePageComponent } from './doctor-home-page/doctor-home-page.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
     
   ],
   imports: [

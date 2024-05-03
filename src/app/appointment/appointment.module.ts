@@ -5,12 +5,16 @@ import { AppointmentFormComponent } from '../appointment-form/appointment-form.c
 import { PatientHomePageComponent } from '../patient-home-page/patient-home-page.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DoctorHomePageComponent } from '../doctor-home-page/doctor-home-page.component';
+import { PatientsAppointmentListComponent } from '../patients-appointment-list/patients-appointment-list.component';
 
 @NgModule({
   declarations: [
     AppointmentListComponent,
     AppointmentFormComponent,
-    PatientHomePageComponent
+    PatientHomePageComponent,
+    DoctorHomePageComponent,
+    PatientsAppointmentListComponent
   ],
   imports: [
     CommonModule,
