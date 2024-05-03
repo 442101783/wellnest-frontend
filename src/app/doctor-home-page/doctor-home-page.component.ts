@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 
 @Component({
@@ -9,5 +10,9 @@ import { Router } from '@angular/router';
 })
 export class DoctorHomePageComponent {
 
-
+  constructor(private authService: AuthenticationService) {}
+  
+  logout(): void {
+    this.authService.logout();
+  }
 }

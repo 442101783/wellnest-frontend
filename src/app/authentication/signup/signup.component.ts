@@ -35,6 +35,41 @@ export class SignupComponent implements OnInit {
  })
  }
 
+ onKeyDown(event: KeyboardEvent) {
+
+  const key = event.key;
+
+
+  const inputElement = event.target as HTMLInputElement;
+
+
+  if (inputElement.value.length >= 10 && !['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Tab', 'Enter'].includes(key)) {
+
+    event.preventDefault();
+  }
+
+
+  if (!(event.ctrlKey || event.altKey || event.metaKey) && !['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Tab', 'Enter'].includes(key) && isNaN(Number(key))) {
+
+    event.preventDefault();
+  }
+}
+
+onNameKeyDown(event: KeyboardEvent) {
+
+  const key = event.key;
+
+
+  if (!(event.ctrlKey || event.altKey || event.metaKey) && !['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Tab', 'Enter'].includes(key) && !(/[a-zA-Z]/.test(key))) {
+
+    event.preventDefault();
+  }
+}
+
+ closeLogin() {
+  this.router.navigate(['']);
+}
+
 
  passwordMatchValidator() {
   return (control: AbstractControl) => {
@@ -71,6 +106,8 @@ export class SignupComponent implements OnInit {
     return null;
   };
 }
+
+
    onSubmit(){
     if(this.signupForm.valid){
 
@@ -91,4 +128,6 @@ export class SignupComponent implements OnInit {
     }
     }
   }
+
+  
 }

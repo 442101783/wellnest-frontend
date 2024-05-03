@@ -1,11 +1,97 @@
 .login-container{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 999;
+    z-index: 1050;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 24px 20px;
     border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 400px;
+    max-width: 90%;
     
 }
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+    font-weight: bold;
+}
+
+.close-button:hover {
+    color: #f00;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"],
+button[routerLink] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover,
+button[routerLink]:hover {
+    background-color: #004494;
+}
+
+.small.text-danger {
+    display: block; 
+    margin-top: 5px; 
+}
+
+.mb-3{
+    text-align: center;
+}
+
+.eye-icon {
+    background: url('eye.svg') no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  .eye-slash-icon {
+    background: url('eye-slash.svg') no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .password-input {
+    padding-right: 30px;
+  }
+
+  .password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+  }

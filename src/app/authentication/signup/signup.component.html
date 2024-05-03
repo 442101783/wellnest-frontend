@@ -1,33 +1,42 @@
 <app-home></app-home>
 <div class="signup-container">
-    <h3>Sign Up</h3>
+
+    <button class="close-button" (click)="closeLogin()">x</button>
+
+    <h2>Sign Up</h2>
     <hr>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
+        
+        <div class="row">
+        <div class="col-md-6 mb-3">
             <label class="form-label">First Name</label>
-            <input class="form-control my-2" type="text" formControlName="fName">
+            <input class="form-control my-2" type="text" formControlName="fName" (keydown)="onNameKeyDown($event)">
             <small class="text-danger" *ngIf="signupForm.get('fName')?.invalid && signupForm.get('fName')?.touched">First Name is required.</small>
         </div>
 
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Last Name</label>
-            <input class="form-control my-2" type="text" formControlName="lName">
+            <input class="form-control my-2" type="text" formControlName="lName" (keydown)="onNameKeyDown($event)">
             <small class="text-danger" *ngIf="signupForm.get('lName')?.invalid && signupForm.get('lName')?.touched">Last Name is required.</small>
         </div>
+        </div>
 
-        <div class="mb-3">
+        <div class="row">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Phone Number</label>
-            <input class="form-control my-2" type="text" formControlName="phoneNumber">
+            <input class="form-control my-2" type="text" formControlName="phoneNumber" (keydown)="onKeyDown($event)">
             <small class="text-danger" *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched">Phone number is required and must start with "05" and conatin 10 numbers.</small>
         </div>
 
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Email</label>
             <input class="form-control my-2" type="email" formControlName="email">
             <small class="text-danger" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">Email is required and must be a valid email address.</small>
         </div>
+</div>
 
-        <div class="mb-3">
+<div class="row">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Gender</label>
             <select class="form-select my-2" formControlName="gender">
                 <option value="" disabled selected>Select Gender</option>
@@ -37,28 +46,32 @@
             <small class="text-danger" *ngIf="signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched">Gender is required.</small>
         </div>
 
-        <div class="mb-3">
+       
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Birth Date</label>
+            <input class="form-control my-2" type="date" formControlName="birthDate">
+            <small class="text-danger" *ngIf="signupForm.get('birthDate')?.invalid && signupForm.get('birthDate')?.touched">Birth Date is required.</small>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Password</label>
             <input class="form-control my-2" type="password" formControlName="password">
             <small class="text-danger" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">Password is required and must meet the specified criteria.</small>
         </div>
 
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Confirm Password</label>
             <input class="form-control my-2" type="password" formControlName="confirmPassword">
             <small class="text-danger" *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">Confirm Password is required and must match the password.</small>
         </div>
-
-        <div class="mb-3">
-            <label class="form-label">Birth Date</label>
-            <input class="form-control my-2" type="date" formControlName="birthDate">
-            <small class="text-danger" *ngIf="signupForm.get('birthDate')?.invalid && signupForm.get('birthDate')?.touched">Birth Date is required.</small>
         </div>
 
         <button class="btn btn-dark my-2" type="submit" [disabled]="signupForm.invalid">Submit</button>
 
     </form>
-    <div class="mb-3">
+    <div class="mb-2">
         <label>Already have an account?</label>
         <button class="btn btn-dark mx-4" [routerLink]="['/login']">Login</button>
     </div>
