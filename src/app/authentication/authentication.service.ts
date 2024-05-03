@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
 import { Patient } from '../models/patient';
+
 @Injectable({
   providedIn: 'root'
 })

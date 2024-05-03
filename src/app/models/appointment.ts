@@ -2,6 +2,7 @@ export interface Appointment {
 id:string,
 patientID:string,
 doctorID:string,
+patientName:string,
 doctorName:string,
 date:Date,
 department:'family'|'cardiology'|'general'
