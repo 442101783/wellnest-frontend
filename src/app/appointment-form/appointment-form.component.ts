@@ -15,13 +15,15 @@ appointmentForm: FormGroup = new FormGroup({});
 departments:string[] = ['Family','Cardiology','General']
 doctorName:string[]=[]
 
+avaiableAppointments:Appointment[]=[]
+
 constructor(private formBuilder:FormBuilder,
   private appointmentService:AppointmentService,
   private router: Router,
   private activatedRoute: ActivatedRoute)
   {}
 
-
+avalableAppointments:Appointment[] = []
 ngOnInit(): void {
 this.appointmentForm = this.formBuilder.group({
 department:['',Validators.required],
@@ -42,10 +44,17 @@ onSubmit(){
     let appointment: Appointment = this.appointmentForm.value;
     
     
-
+    this.appointmentService.getAvailableAppoitntments(appointment.doctorID).subscribe(appointments => {
+      this.avaiableAppointments = appointments
+    });
    
   }
 }
+
+bookAppointment(appointmentID:string){
+
+}
+
 fetchDoctors(): void {
   const selectedDepartment = this.appointmentForm.get('department')?.value;
   // Call service method to fetch doctors based on the selected department

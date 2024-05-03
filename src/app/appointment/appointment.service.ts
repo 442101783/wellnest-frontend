@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { Prescription } from '../models/prescription';
+import { Diagnosis } from '../models/diagnosis';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +33,10 @@ getAvailableDoctors(department:string): Observable<Doctor[]> {
 
 }
 
+getAvailableAppoitntments(doctorID:string): Observable<Appointment[]> {
+  return this.http.get<Appointment[]>(this.apiUrl+ "/availableDoctors/"+doctorID)
+
+}
 
 addAppointment(appointment: Appointment): Observable<void>{
   return this.http.post<void>(this.apiUrl+ "/addAppointment/",appointment)
@@ -49,8 +55,13 @@ getPatientsAppointments(): Observable<Appointment[]> {
   return this.http.get<Appointment[]>(this.apiUrl+ "/appointments")
 
 }
-//getDoctors(): Observable<Doctor>{
+getPrescriptions(): Observable<Prescription[]>{
+  return this.http.get<Prescription[]>(this.apiUrl+"/getPrescriptions")
 
-//}
+}
+getDiagnosis(): Observable<Diagnosis[]>{
+  return this.http.get<Diagnosis[]>(this.apiUrl+"/getDiagnosis")
+
+}
 
 }
