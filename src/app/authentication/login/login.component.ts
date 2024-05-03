@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
     if(response){
       this.authService.getPatient().subscribe(
         (patient) => {
-          this.router.navigate(['/patient-page/'+patient.patientID])
+          this.router.navigate(['/patient-page'])
         },
         (error) => {
           console.error(error)

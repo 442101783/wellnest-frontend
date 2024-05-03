@@ -27,13 +27,27 @@ export class SignupComponent implements OnInit {
     lName:['',Validators.required],
     phoneNumber:['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     password:['',[Validators.required,Validators.minLength(8),this.checkPassword()]],
-   
+    confirmPassword:['',[Validators.required,Validators.minLength(8),this.passwordMatchValidator()]],
     email:['',[Validators.required,Validators.email]],
     gender:['',Validators.required],
     birthDate:['',Validators.required],
 
  })
  }
+
+
+ passwordMatchValidator() {
+  return (control: AbstractControl) => {
+    const pass = control.root.get('password');
+    const confirmPass = control.root.get('confirmPassword');
+
+    if (pass && confirmPass && pass.value !== confirmPass.value) {
+      return { passwordMismatch: true, message: 'Passwords do not match.' };
+    } else {
+      return null;
+    }
+  };
+}
 
  checkPassword() {
   return (control: AbstractControl) => {
@@ -42,6 +56,7 @@ export class SignupComponent implements OnInit {
     const hasSmall = /[a-z]/.test(value);
     const hasSymbol = /[$@$!%*?&]/.test(value);
     const isLengthValid = value && value.length >= 8;
+     
 
     if (!hasCapital) {
       return { missingCapital: true, message: 'Password must contain at least one capital letter.' };

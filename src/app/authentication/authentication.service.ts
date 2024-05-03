@@ -26,7 +26,7 @@ login(phoneNumber: number,password:string): Observable<any>{
 
   return this.http.post<any>(this.apiUrl+"/login/",{phoneNumber,password}).pipe(map(response => {
     if (response && response.token){
-      localStorage.setItem('token',response.token);
+      localStorage.setItem('token',response);
       return true;
     }
     return false;
@@ -39,7 +39,7 @@ logout(){
   this.router.navigate([''])
 }
 getPatient(): Observable<Patient> {
-return this.http.get<Patient>(this.apiUrl+"/getPatient/"+this.getToken())
+return this.http.get<Patient>(this.apiUrl+"/getPatient")
 }
 
 getToken(){

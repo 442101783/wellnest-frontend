@@ -20,7 +20,6 @@ import { AuthenticationService } from './authentication/authentication.service';
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
-    AppointmentModule,
     FormsModule,
     SharedModule,
     HttpClientModule,

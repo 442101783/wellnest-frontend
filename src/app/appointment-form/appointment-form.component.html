@@ -13,6 +13,15 @@
         Department is required</div>
     </div>
 
+
+    <div>
+        <label class="form-label mx-2">Choose a doctor</label>
+        <select id="doctor" formControlName="doctor">
+          <option value="">Select Doctor</option>
+          <option *ngFor="let doctor of doctorName" [value]="doctor">{{ doctor }}</option>
+        </select>
+      </div>
+
     <div>
         <label class="form-label">Pick a date</label>
         <input class="form-control my-2" type="date" formControlName="date">
@@ -43,4 +52,5 @@
 
     <button class="btn btn-primary" type="submit" [disabled]="appointmentForm.invalid">Submit</button>
 </form>
+
 </div>

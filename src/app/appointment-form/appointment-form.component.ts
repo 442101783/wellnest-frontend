@@ -3,6 +3,7 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { AppointmentService } from '../appointment/appointment.service';
 import { Appointment } from '../models/appointment';
 import { Router,ActivatedRoute } from '@angular/router';
+import { Doctor } from '../models/doctor';
 @Component({
   selector: 'app-appointment-form',
   templateUrl: './appointment-form.component.html',
@@ -11,6 +12,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class AppointmentFormComponent implements OnInit{
 
 appointmentForm: FormGroup = new FormGroup({});
+departments:string[] = ['Family','Cardiology','General']
+doctorName:string[]=[]
 
 constructor(private formBuilder:FormBuilder,
   private appointmentService:AppointmentService,
@@ -22,20 +25,12 @@ constructor(private formBuilder:FormBuilder,
 ngOnInit(): void {
 this.appointmentForm = this.formBuilder.group({
 department:['',Validators.required],
+doctor:[''],
 date:['',Validators.required],
 time:['',Validators.required]
 
 })
 
-let appointmentID = this.activatedRoute.snapshot.paramMap.get('id')
-
-if(appointmentID){
-  let appoitnment = this.appointmentService.getAppointment(appointmentID)
-
-  if(appoitnment){
-    this.appointmentForm.patchValue(appoitnment)
-  }
-}
 
 
 }
@@ -45,28 +40,19 @@ onSubmit(){
   if(this.appointmentForm.valid){
 
     let appointment: Appointment = this.appointmentForm.value;
-    let apointmentID = this.activatedRoute.snapshot.paramMap.get('id')
-    appointment.patientID = "1"
-    appointment.doctorID = '1'
-    appointment.id = Date.now().toString()
-
-
-    if(apointmentID){
-      //edit
-      this.appointmentService.editAppointment(apointmentID,appointment).subscribe(() => {
-        console.log("edit request")
-      })
-    } else {
-      //create
-      this.appointmentService.addAppointment(appointment).subscribe(() => {
-        console.log("create request")
-      })
-    }
-
-
-    this.router.navigate(['/list'])
     
+    
+
    
   }
 }
+fetchDoctors(): void {
+  const selectedDepartment = this.appointmentForm.get('department')?.value;
+  // Call service method to fetch doctors based on the selected department
+  this.appointmentService.getAvailableDoctors(selectedDepartment)
+    .subscribe((data: Doctor[]) => {
+      this.doctorName = data.map(doctor => doctor.fName); // Update the list of doctors
+    });
+}
+
 }

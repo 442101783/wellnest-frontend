@@ -17,28 +17,38 @@ private appointments: Appointment[] = [];
 constructor(private http:HttpClient,private authService:AuthenticationService){}
 
 getAppointments(): Observable<Appointment[]> {
-  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments/"+this.authService.getToken)
+  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments")
 
 }
 
 getAppointment(id:string): Observable<Appointment> {
-  return this.http.get<Appointment>(this.apiUrl+ "/appointment/"+this.authService.getToken)
+  return this.http.get<Appointment>(this.apiUrl+ "/appointment")
 
 }
 
+getAvailableDoctors(department:string): Observable<Doctor[]> {
+  return this.http.get<Doctor[]>(this.apiUrl+ "/availableDoctors/"+department)
+
+}
+
+
 addAppointment(appointment: Appointment): Observable<void>{
-  return this.http.post<void>(this.apiUrl+ "/appointment/",appointment)
+  return this.http.post<void>(this.apiUrl+ "/addAppointment/",appointment)
 }
 
 deleteAppointment(id: string): Observable<void>{
-  return this.http.delete<void>(this.apiUrl+ "/appointment/"+id)
+  return this.http.delete<void>(this.apiUrl+ "/deleteAppointment/"+id)
 }
 
 editAppointment(id: string, editedAppointment:Appointment): Observable<void>{
-  return this.http.put<void >(this.apiUrl+ "/appointment/" + id,editedAppointment)
+  return this.http.put<void >(this.apiUrl+ "/editAppointment/" + id,editedAppointment)
 
 }
 
+getPatientsAppointments(): Observable<Appointment[]> {
+  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments")
+
+}
 //getDoctors(): Observable<Doctor>{
 
 //}
