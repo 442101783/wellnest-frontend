@@ -1,17 +1,13 @@
+<app-appointment-list></app-appointment-list>
 
     <body>
         <header class="header">
             <nav class="nav">
                 <a href="#" class="nav_logo">WellNest</a>
         
-                <ul class="nav_items">
-                    <li class="nav_item">
-                        <a href="" class="nav_link">Home</a>
-                        <a href="#" class="nav_link">Services</a>
-                        <a href="#" class="nav_link">Contact Us</a>
+
         
-                    </li>
-                </ul>
+                    
         
                 <button (click)="logout()" type="button" class="button">log out</button>
             </nav>
@@ -19,8 +15,10 @@
         
         <section class="home">
 
+            <div class="patient-buttons">
             <button class="btn btn-light mx-2" [routerLink]="['/new']">Book New Appointment</button>
-            <button class="btn btn-light mx-2" [routerLink]="['/list']">View Appointments</button>
+            <button class="btn btn-light mx-2" [routerLink]="['#']">Profile</button>
+            </div>
         
         </section>
 

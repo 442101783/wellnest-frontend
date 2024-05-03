@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { AppointmentModule } from '../appointment/appointment.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-home-page',

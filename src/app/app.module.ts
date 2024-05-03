@@ -11,9 +11,11 @@ import { HomeModule } from './home/home.module';
 import { TokenInterceptor } from './token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './authentication/authentication.service';
+import { DoctorHomePageComponent } from './doctor-home-page/doctor-home-page.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
     
   ],
   imports: [
