@@ -34,14 +34,12 @@ export class LoginComponent implements OnInit{
   let user:User = this.loginForm.value;
   this.authService.login(user.phoneNumber,user.password).subscribe(
     (response) => {
-    if(response){
-      this.authService.getPatient().subscribe(
-        (patient) => {
-          this.router.navigate(['/patient-page'])
-        },
-        (error) => {
-          console.error(error)
-          alert("error retrieving patient data")
+      if (response && response.userType === 'patient') {
+        this.router.navigate(['/patient-page']);
+      } else if (response && response.userType === 'doctor') {
+        this.router.navigate(['/doctor-page']);
+      }
+        
         }
       )
     } else{
@@ -49,7 +47,6 @@ export class LoginComponent implements OnInit{
       alert("failed to login")
     }
   }
-  ) 
+  
     }
-  }
-}
+  

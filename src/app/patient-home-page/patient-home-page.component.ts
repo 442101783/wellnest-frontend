@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class PatientHomePageComponent {
   constructor(private authService: AuthenticationService) {}
 
+patientProfile(){
+  this.authService.getPatient()
+}
 
   logout(): void {
     this.authService.logout();

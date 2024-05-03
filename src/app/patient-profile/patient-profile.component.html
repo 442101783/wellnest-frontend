@@ -1,0 +1,44 @@
+<div class="patient-profile">
+    <h2></h2>
+
+    <div class="table">
+        <h3>Prescriptions</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Prescription</th>
+                    <th>Dosage</th>
+                    <th>Issue Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prescription of prescriptions">
+                    <td>{{prescription.prescription}}</td>
+                    <td>{{prescription.dosage}}</td>
+                    <td>{{prescription.date}}</td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="table">
+            <h3>Diagnosis</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Diagnose</th>
+                        <th>Issue Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let diagnose of diagnosis">
+                        <td>{{diagnose.diagnosis}}</td>
+                        <td>{{diagnose.date}}</td>
+                        <td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+  </div>

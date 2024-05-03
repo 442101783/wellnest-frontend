@@ -1,3 +1,4 @@
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { PatientHomePageComponent } from './patient-home-page/patient-home-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
@@ -16,7 +17,9 @@ const routes: Routes = [
   {path:"new",component:AppointmentFormComponent},
   {path:"list",component:AppointmentListComponent},
   {path:"edit/:appointmentID",component:AppointmentFormComponent},
-  {path:"doctor-page",component:DoctorHomePageComponent}
+  {path:"doctor-page",component:DoctorHomePageComponent},
+  {path:"patient-profile",component:PatientProfileComponent},
+
 
 
 ];

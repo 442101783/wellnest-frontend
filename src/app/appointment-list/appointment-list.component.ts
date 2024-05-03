@@ -12,11 +12,11 @@ export class AppointmentListComponent implements OnInit {
 appointments:Appointment[] = [];
 patientsAppointments: Appointment [] = [];
 
-constructor(private appointmentservice :AppointmentService){}
+constructor(private appointmentService :AppointmentService){}
   
 
 ngOnInit(): void {
-  this.appointmentservice.getAppointments().subscribe(appointments => {
+  this.appointmentService.getAppointments().subscribe(appointments => {
     this.appointments = appointments
   });
 
@@ -25,7 +25,7 @@ ngOnInit(): void {
 
   deleteAppointment(id: string){
 
-    this.appointmentservice.deleteAppointment(id).subscribe( () => {
+    this.appointmentService.deleteAppointment(id).subscribe( () => {
       console.log("delete request")
     })
 

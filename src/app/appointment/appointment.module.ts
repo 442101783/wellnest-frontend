@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DoctorHomePageComponent } from '../doctor-home-page/doctor-home-page.component';
 import { PatientsAppointmentListComponent } from '../patients-appointment-list/patients-appointment-list.component';
+import { PatientProfileComponent } from '../patient-profile/patient-profile.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PatientsAppointmentListComponent } from '../patients-appointment-list/p
     AppointmentFormComponent,
     PatientHomePageComponent,
     DoctorHomePageComponent,
-    PatientsAppointmentListComponent
+    PatientsAppointmentListComponent,
+    PatientProfileComponent
   ],
   imports: [
     CommonModule,
