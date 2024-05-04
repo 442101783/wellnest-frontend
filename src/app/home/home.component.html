@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 
 <body>
+
 <header class="header">
     <nav class="nav">
-        <a href="" class="nav_logo">WellNest</a>
+        <a class="nav_logo">WellNest</a>
 
         <ul class="nav_items">
             <li class="nav_item">
-                <a href="" class="nav_link">Home</a>
-                <a href="#" class="nav_link">Services</a>
-                <a href="#" class="nav_link">About Us</a>
+                <a (click)="toggleHome()" class="nav_link">Home</a>
+                <a (click)="toggleService()" class="nav_link">Services</a>
+                <a (click)="toggleAbout()" class="nav_link">About Us</a>
 
             </li>
         </ul>
@@ -20,6 +21,77 @@
 
 <section class="home">
 
+    <div *ngIf="showHome" class="home-container">
+
+        <div class="card">
+          <h3>WellNest</h3>
+          <p>Encapsulating the fusion of 'Nest' and 'Wellness,' embodying a comforting and health-focused ethos. 
+            The term 'Nest' conjures a sense of security and care, while 'Wellness' signifies a commitment to holistic health. </p>
+        </div>
+
+    </div>
+
+    <div *ngIf="showService" class="service-container">
+        
+        <div class="card">
+            <span class="bi bi-person-arms-up text-info"></span>
+          <h3>Family</h3>
+          <p class="mb-3">Focused on providing comprehensive healthcare services tailored to the needs of families. 
+           Offering medical care for individuals of all ages, from infants to seniors, with an emphasis on preventive care, health 
+           promotion, and disease management within the family context.</p>
+
+           <p class="mb-3">Services provided by the Family Department often include routine check-ups, vaccinations, management of chronic conditions, women's health services including prenatal care and family planning, pediatric care, geriatric care, and counseling on lifestyle 
+            and behavioral changes to improve overall family health.</p>
+
+            <p>The Family Department serves as a primary point of contact for families seeking medical care and strives to establish long-term 
+                relationships with patients, offering continuity of care and personalized treatment plans to address the unique health concerns 
+                and challenges faced by each family member. The department may also collaborate closely with other specialties within the clinic to 
+                ensure comprehensive and coordinated care for families.</p>
+
+
+        </div>
+        <div class="card">
+            <span class="bi bi-heart-pulse-fill text-danger"></span>
+          <h3>Cardiology</h3>
+          <p class="mb-3">Specializes in diagnosing and treating disorders of the heart and circulatory system. Staffed by highly trained cardiologists, 
+            nurses, and support staff, this department offers a wide range of services to patients experiencing cardiovascular conditions, ranging from 
+            routine check-ups to advanced diagnostic procedures and treatments.</p>
+
+            <p class="mb-3">Cardiologists within the department work closely with patients to develop personalized treatment plans, which may include lifestyle modifications, 
+                medication management, interventional procedures, or surgical interventions. The department also emphasizes preventive care, providing education 
+                on risk factor reduction, healthy lifestyle choices, and regular screenings to help patients maintain optimal heart health.</p>
+            
+            <p>Overall, the Cardiology Department plays a crucial role in promoting cardiovascular wellness, diagnosing and managing heart conditions, and improving 
+                the quality of life for patients affected by heart disease.</p>
+        </div>
+        <div class="card">
+            <span class="bi bi-bandaid-fill text-primary"></span>
+          <h3>General</h3>
+          <p class="mb-3">Serves as a fundamental unit providing primary healthcare services to patients of all ages and backgrounds. It serves as the initial point of 
+            contact for individuals seeking medical care and offers a wide range of essential healthcare services aimed at addressing common health concerns, managing 
+            acute illnesses, and promoting overall wellness.</p>
+
+            <p class="mb-3">Staffed by general practitioners, nurses, and support staff, the General Department provides comprehensive medical care, including routine check-ups, 
+                preventive screenings, vaccinations, diagnosis and treatment of common illnesses and injuries, and management of chronic conditions such as diabetes, 
+                hypertension, and asthma.</p>
+
+            <p>The department emphasizes continuity of care, building long-term relationships with patients, and addressing their healthcare needs holistically. 
+                It often serves as a gateway to specialized care, referring patients to other departments or specialists within the clinic when necessary.</p>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="showAbout" class="about-container">
+
+            <div class="card">
+              <h3>About Us</h3>
+              <p>This is an undergradute graduation project (IS499).<br>Done by Aseel Alarifi, Bassam Alarifi, and Mohammed Altoub.<br>
+                Under the supervision of Dr. Muhammed Shoaib in King Saud University, Riyadh.</p>
+
+            </div>
+
+      </div>
 </section>
 
 </body>

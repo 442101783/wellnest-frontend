@@ -23,6 +23,11 @@
   .button{
     color: #fff
   }
+
+.nav_link{
+  cursor: pointer;
+}
+
 .nav_logo{
     font-size: 25px;
 }
@@ -57,3 +62,52 @@
     background-position: center;
   }
 
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 40vh;
+  }
+
+  .service-container{
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    height: 60vh;
+  }
+
+  .about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 40vh;
+  }
+  
+  .card {
+    position: relative;
+    width: 30%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h3 {
+    margin-top: 0;
+  }
+  
+  .card p {
+    margin-bottom: 0;
+
+  }
+
+  .card .bi{
+    position: absolute;
+    font-size: 2rem;
+    top: 0;
+    right: 0;
+    margin: 2%;
+    color: rgb(0, 140, 255);
+  }
