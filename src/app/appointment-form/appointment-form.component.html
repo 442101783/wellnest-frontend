@@ -3,11 +3,14 @@
 
     <div>
         <label class="form-label mx-2">Choose a Department</label>
-        <select class="option mx-2" id="department" formControlName="department">
+        <select class="option mx-2" id="department" formControlName="department" (change)="fetchDoctors()">
             <option value="family">Family</option>
             <option value="cardiology">Cardiology</option>
             <option value="general">General</option>
+            <option value="orthopedic">Orthopedic</option>
         </select>
+        
+        
         <div *ngIf="appointmentForm.get('department')?.invalid 
         && appointmentForm.get('department')?.touched">
         Department is required</div>
@@ -43,7 +46,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let appointment of avaiableAppointments">
+            <tr *ngFor="let appointment of availableAppointments">
                 <td>{{appointment.time}}</td>
                 <td>{{appointment.date}}</td>
                 <td>{{appointment.department}}</td>
@@ -56,7 +59,7 @@
     </table>
     </div>
     
-    <ul *ngIf="avaiableAppointments.length; else noAppointments">
+    <ul *ngIf="availableAppointments.length; else noAppointments">
     
     </ul>
     

@@ -13,7 +13,7 @@ import { Diagnosis } from '../models/diagnosis';
 })
 export class AppointmentService {
 
-private apiUrl = "http://localhost:3001"
+private apiUrl = "http://localhost:8080/api/user"
 private appointments: Appointment[] = [];
 
 constructor(private http:HttpClient,private authService:AuthenticationService){}
@@ -29,25 +29,26 @@ getAppointment(id:string): Observable<Appointment> {
 }
 
 getAvailableDoctors(department:string): Observable<Doctor[]> {
-  return this.http.get<Doctor[]>(this.apiUrl+ "/availableDoctors/"+department)
+  return this.http.post<Doctor[]>(this.apiUrl + "/book",  { "department": department } )
+
 
 }
 
 getAvailableAppoitntments(doctorID:string): Observable<Appointment[]> {
-  return this.http.get<Appointment[]>(this.apiUrl+ "/availableDoctors/"+doctorID)
+  return this.http.get<Appointment[]>(this.apiUrl+ "/availableDoctors"+doctorID)
 
 }
 
 addAppointment(appointment: Appointment): Observable<void>{
-  return this.http.post<void>(this.apiUrl+ "/addAppointment/",appointment)
+  return this.http.post<void>(this.apiUrl+ "/addAppointment",appointment)
 }
 
 deleteAppointment(id: string): Observable<void>{
-  return this.http.delete<void>(this.apiUrl+ "/deleteAppointment/"+id)
+  return this.http.delete<void>(this.apiUrl+ "/deleteAppointment"+id)
 }
 
 editAppointment(id: string, editedAppointment:Appointment): Observable<void>{
-  return this.http.put<void >(this.apiUrl+ "/editAppointment/" + id,editedAppointment)
+  return this.http.put<void >(this.apiUrl+ "/editAppointment" + id,editedAppointment)
 
 }
 

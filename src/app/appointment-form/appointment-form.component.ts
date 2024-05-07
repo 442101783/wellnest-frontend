@@ -12,10 +12,10 @@ import { Doctor } from '../models/doctor';
 export class AppointmentFormComponent implements OnInit{
 
 appointmentForm: FormGroup = new FormGroup({});
-departments:string[] = ['Family','Cardiology','General']
+departments:string[] = ['family','cardiology','general', 'orthopedic']
 doctorName:string[]=[]
 
-avaiableAppointments:Appointment[]=[]
+availableAppointments:Appointment[]=[]
 
 constructor(private formBuilder:FormBuilder,
   private appointmentService:AppointmentService,
@@ -45,7 +45,7 @@ onSubmit(){
     
     
     this.appointmentService.getAvailableAppoitntments(appointment.doctorID).subscribe(appointments => {
-      this.avaiableAppointments = appointments
+      this.availableAppointments = appointments
     });
    
   }
@@ -56,11 +56,15 @@ bookAppointment(appointmentID:string){
 }
 
 fetchDoctors(): void {
+
+  
   const selectedDepartment = this.appointmentForm.get('department')?.value;
   // Call service method to fetch doctors based on the selected department
+  
   this.appointmentService.getAvailableDoctors(selectedDepartment)
     .subscribe((data: Doctor[]) => {
-      this.doctorName = data.map(doctor => doctor.fName); // Update the list of doctors
+      console.log(data);
+      this.doctorName = data.map(doctor => doctor.fname); // Update the list of doctors
     });
 }
 
