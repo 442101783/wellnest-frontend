@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators,AbstractControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
-import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
@@ -12,6 +11,7 @@ export class SignupComponent implements OnInit {
   
 
  signupForm: FormGroup = new FormGroup({});
+ responseMessage: any;
   
  constructor(private formBuilder:FormBuilder,
   private authenticationService:AuthenticationService,
@@ -23,14 +23,13 @@ export class SignupComponent implements OnInit {
   //password > 8 letters
   //contain capital,number,small,sympol
   this.signupForm = this.formBuilder.group({
-    fName:['',Validators.required],
-    lName:['',Validators.required],
+    fname:['',Validators.required],
+    lname:['',Validators.required],
     phoneNumber:['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     password:['',[Validators.required,Validators.minLength(8),this.checkPassword()]],
     confirmPassword:['',[Validators.required,Validators.minLength(8),this.passwordMatchValidator()]],
-    email:['',[Validators.required,Validators.email]],
     gender:['',Validators.required],
-    birthDate:['',Validators.required],
+    dob:['',Validators.required],
 
  })
  }
@@ -112,14 +111,26 @@ onNameKeyDown(event: KeyboardEvent) {
     if(this.signupForm.valid){
 
       console.log("valid form")
-      let user:User = this.signupForm.value;
+      var formData = this.signupForm.value;
+      var data = {
+       fname: formData.fname,
+       lname: formData.lname,
+       password: formData.password,
+       phoneNumber: formData.phoneNumber,
+       dob: formData.dob,
+       gender: formData.gender
+
+      }
 
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (regex.test(user.password)) {
+    if (regex.test(formData.password)) {
        console.log('Password meets the criteria.');
        alert("sign up successful")
-       this.authenticationService.signup(user)
-       this.router.navigate([''])
+       this.authenticationService.signup(JSON.stringify(data)).subscribe((response:any)=>{
+        this.responseMessage = response?.message;
+        this.router.navigate([''])
+       })
+       
 
 
     } else {

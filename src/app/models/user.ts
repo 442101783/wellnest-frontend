@@ -1,9 +1,8 @@
 export interface User {
-   id:string,
-   fName:string,
-   lName:string,
+   fname:string,
+   lname:string,
    password:string,
    phoneNumber:number,
-   birthDate:Date,
+   dob:Date,
    gender:string
 }

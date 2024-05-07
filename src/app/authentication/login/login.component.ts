@@ -56,20 +56,15 @@ onKeyDown(event: KeyboardEvent) {
 
     if(this.loginForm.valid){
 
-//modifu logic add mapping
-  let user:User = this.loginForm.value;
-  this.authService.login(user.phoneNumber,user.password).subscribe(
-    (response) => {
-      if (response && response.userType === 'patient') {
-        this.router.navigate(['/patient-page']);
-      } else if (response && response.userType === 'doctor') {
-        this.router.navigate(['/doctor-page']);
-      } else{
-      console.log("failed to log in")
-      alert("failed to login")
-    }
-  }
-  ) 
+
+      const credentials = {
+        phoneNumber: this.loginForm.value.phoneNumber,
+        password: this.loginForm.value.password
+      }
+
+
+  this.authService.handleLogin(credentials)
+
     }
     this.showPassword = false;
   }

@@ -12,28 +12,40 @@ import { Patient } from '../models/patient';
 })
 export class AuthenticationService {
 
-  private apiUrl = "http://localhost:3001"
+  private apiUrl = "http://localhost:8080/api/user"
   private jwtHelper: JwtHelperService = new JwtHelperService();
   private users: User[] = [];
 
 constructor(private http:HttpClient,private router: Router){
 }
 
-signup(user:User): Observable<any>{
-return this.http.post<any>(this.apiUrl,JSON.stringify(user))
+signup(s : string): Observable<any> {
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  return this.http.post<any>(this.apiUrl + "/signup", s, { headers });
 }
 
-login(phoneNumber: number,password:string): Observable<any>{
 
-  return this.http.post<any>(this.apiUrl+"/login/",{phoneNumber,password}).pipe(map(response => {
-    if (response && response.token){
-      localStorage.setItem('token',response);
-      return true;
+login(credentials: { phoneNumber: string; password:string }): Observable<any>{
+
+  return this.http.post<any>(this.apiUrl+"/login", credentials)
+}
+
+handleLogin(credentials: {phoneNumber: string; password: string}){
+  this.login(credentials).subscribe({
+    next: (response: any) => {
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('role', response.role);
+      if (response && response.role === 'patient') {
+        this.router.navigate(['/patient-page']);
+      } else if (response && response.role === 'doctor') {
+        this.router.navigate(['/doctor-page']);
+      } else{
+      console.log("failed to log in")
+      alert("failed to login")
     }
-    return false;
+      
+    }
   })
-  )
-
 }
 logout(){
   localStorage.removeItem('token');
