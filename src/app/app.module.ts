@@ -12,10 +12,22 @@ import { TokenInterceptor } from './token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './authentication/authentication.service';
 import { DoctorHomePageComponent } from './doctor-home-page/doctor-home-page.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DiagnoseFormComponent } from './diagnose-form/diagnose-form.component';
+import { PrescribeFormComponent } from './prescribe-form/prescribe-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    DiagnoseFormComponent,
+    PrescribeFormComponent
+  
     
   ],
   imports: [
@@ -26,7 +38,13 @@ import { DoctorHomePageComponent } from './doctor-home-page/doctor-home-page.com
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi:true}

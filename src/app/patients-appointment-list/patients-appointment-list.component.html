@@ -9,16 +9,20 @@
                 <th>Time</th>
                 <th>Date</th>
                 <th>Patient</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let appointment of patientAppointments">
-                <td>{{appointment.time}}</td>
+                <td>{{appointment.time | convertTime}}</td>
                 <td>{{appointment.date}}</td>
                 <td>{{appointment.patientName}}</td>
 
                 <td>
-                    <button class="btn btn-sm btn-secondary mx-1" >Edit</button>
+                    <button class="btn btn-sm btn-primary mx-1" (click)="openDiagnoseDialog(appointment.appointmentID)">Diagnose</button>
+                    <button class="btn btn-sm btn-success mx-1" (click)="openPrescribeDialog()">Prescribe</button>
+                    <button class="btn btn-sm btn-danger mx-1" >End</button>
+
                 </td>
             </tr>
         </tbody>

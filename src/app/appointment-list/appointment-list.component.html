@@ -10,14 +10,15 @@
             <th>Date</th>
             <th>Department</th>
             <th>Doctor</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let appointment of appointments">
-            <td>{{appointment.time}}</td>
+            <td>{{appointment.time | convertTime}}</td>
             <td>{{appointment.date}}</td>
-            <td>{{appointment.department}}</td>
-            <td>{{appointment.doctorName}}</td>
+            <td>{{appointment.department | titlecase}}</td>
+            <td>{{appointment.doctorName | titlecase}}</td>
             <td>
                 <button class="btn btn-sm btn-danger mx-1" (click)="deleteAppointment(appointment.appointmentID)">Delete</button>
                 <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/edit']">Edit</button>

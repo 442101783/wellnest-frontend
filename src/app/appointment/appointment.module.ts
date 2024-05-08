@@ -8,6 +8,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DoctorHomePageComponent } from '../doctor-home-page/doctor-home-page.component';
 import { PatientsAppointmentListComponent } from '../patients-appointment-list/patients-appointment-list.component';
 import { PatientProfileComponent } from '../patient-profile/patient-profile.component';
+import { ConvertTimePipe } from '../convert-time.pipe';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { PatientProfileComponent } from '../patient-profile/patient-profile.comp
     PatientHomePageComponent,
     DoctorHomePageComponent,
     PatientsAppointmentListComponent,
-    PatientProfileComponent
+    PatientProfileComponent,
+    ConvertTimePipe
   ],
   imports: [
     CommonModule,

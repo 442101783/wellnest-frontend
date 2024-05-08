@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  .nav_logo,
+
   .nav_link,
   .button{
     color: #fff
@@ -28,9 +28,6 @@
   cursor: pointer;
 }
 
-.nav_logo{
-    font-size: 25px;
-}
   .nav_item{
     column-gap: 25px;
   }
@@ -57,7 +54,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-image: url("bg.jpg");
+    background-image: url("bg.png");
     background-size: cover;
     background-position: center;
   }
@@ -92,6 +89,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: auto;
   }
   
   .card h3 {
@@ -109,5 +107,11 @@
     top: 0;
     right: 0;
     margin: 2%;
+
+  }
+
+  .logo{
+position: fixed;
+left: 5%;
 
   }

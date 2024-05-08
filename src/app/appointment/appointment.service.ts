@@ -65,9 +65,10 @@ getDiagnosis(): Observable<Diagnosis[]>{
   return this.http.get<Diagnosis[]>(this.apiUrl+"/getDiagnosis")
 
 }
-addDiagnosis(diagnosis:Diagnosis): Observable<void>{
-  return this.http.post<void>(this.apiUrl+"/addPrescription",{"diagnosis":diagnosis})
-
+addDiagnosis(diagnosisData: { diagnosis: string, appid: string, status: string }): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/addDiagnosis`, diagnosisData);
 }
+
+
 
 }

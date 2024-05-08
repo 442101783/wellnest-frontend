@@ -1,4 +1,4 @@
 export interface Diagnosis {
-diagnosis:string[],
+diagnosis:string,
 date:Date
 }
