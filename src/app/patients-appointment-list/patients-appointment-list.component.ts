@@ -1,3 +1,4 @@
+import { Prescription } from './../models/prescription';
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../appointment/appointment.service';
 import { Appointment } from '../models/appointment';
@@ -49,17 +50,31 @@ export class PatientsAppointmentListComponent {
 }
 
   
-    openPrescribeDialog(): void {
+    openPrescribeDialog(appointmentID: string): void {
       const dialogRef = this.dialog.open(PrescribeFormComponent, {
-        width: '250px',
-        data: { /* data if needed */ }
+        width: '300px',
+        data: { appid: appointmentID }
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed', result);
-        // Handle result if needed
+        if (result) {
+          this.addprescription(result.appid, result.Prescription, result.expiryDate)
+        }
       });
     }
+    addprescription(appointmentID: string, prescription: string, expiryDate:Date): void {
+      const prescriptionData = {
+        prescription: prescription,
+        appid: appointmentID,
+        expiryDate:expiryDate
+      };
+    
+      this.appointmentService.addPrescriptions(prescriptionData).subscribe({
+        next: () => alert('Diagnosis added successfully!'),
+        error: () => alert('Failed to add diagnosis')
+      });
+    }
+
     ngOnInit(): void {
       this.appointmentService.getDoctorAppointments().subscribe(patientAppointments => {
         this.patientAppointments = patientAppointments
