@@ -19,49 +19,54 @@ private appointments: Appointment[] = [];
 constructor(private http:HttpClient,private authService:AuthenticationService){}
 
 getAppointments(): Observable<Appointment[]> {
-  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments")
+  return this.http.get<Appointment[]>(this.apiUrl+ "/myAppointments")
 
 }
 
-getAppointment(id:string): Observable<Appointment> {
-  return this.http.get<Appointment>(this.apiUrl+ "/appointment")
 
-}
-
-getAvailableDoctors(department:string): Observable<Doctor[]> {
-  return this.http.post<Doctor[]>(this.apiUrl + "/book",  { "department": department } )
+getDoctors(department:string): Observable<Doctor[]> {
+  return this.http.post<Doctor[]>(this.apiUrl + "/getDoctors",  { "department": department } )
 
 
 }
 
-getAvailableAppoitntments(doctorID:string): Observable<Appointment[]> {
-  return this.http.get<Appointment[]>(this.apiUrl+ "/availableDoctors"+doctorID)
+getAvailableAppointments(doctorID:string): Observable<Appointment[]> {
+  return this.http.post<Appointment[]>(this.apiUrl+ "/getAppointment", {"doctorID": doctorID })
 
 }
 
-addAppointment(appointment: Appointment): Observable<void>{
-  return this.http.post<void>(this.apiUrl+ "/addAppointment",appointment)
+addAppointment(appID:string): Observable<void>{
+  return this.http.post<void>(this.apiUrl+ "/selectAppointment", {"appID": appID})
 }
 
-deleteAppointment(id: string): Observable<void>{
-  return this.http.delete<void>(this.apiUrl+ "/deleteAppointment"+id)
+deleteAppointment(appID:string): Observable<void>{
+  return this.http.post<void>(this.apiUrl+ "/deleteAppointment", {"appID": appID})
 }
 
-editAppointment(id: string, editedAppointment:Appointment): Observable<void>{
-  return this.http.put<void >(this.apiUrl+ "/editAppointment" + id,editedAppointment)
+editAppointment(oldID:string, newID:string): Observable<void>{
+  return this.http.post<void >(this.apiUrl+ "/editAppointment", {"oldID": oldID, "newID": newID})
 
 }
 
-getPatientsAppointments(): Observable<Appointment[]> {
-  return this.http.get<Appointment[]>(this.apiUrl+ "/appointments")
+getDoctorAppointments(): Observable<Appointment[]> {
+  return this.http.get<Appointment[]>(this.apiUrl+ "/doctorAppointments")
 
 }
 getPrescriptions(): Observable<Prescription[]>{
   return this.http.get<Prescription[]>(this.apiUrl+"/getPrescriptions")
 
 }
+addPrescriptions(prescription:Prescription): Observable<void>{
+  return this.http.post<void>(this.apiUrl+"/addPrescription",{"prescription":prescription})
+
+}
+
 getDiagnosis(): Observable<Diagnosis[]>{
   return this.http.get<Diagnosis[]>(this.apiUrl+"/getDiagnosis")
+
+}
+addDiagnosis(diagnosis:Diagnosis): Observable<void>{
+  return this.http.post<void>(this.apiUrl+"/addPrescription",{"diagnosis":diagnosis})
 
 }
 

@@ -1,69 +1,43 @@
-<div class=" text-center my-5">
-<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit">
-
-    <div>
-        <label class="form-label mx-2">Choose a Department</label>
-        <select class="option mx-2" id="department" formControlName="department" (change)="fetchDoctors()">
-            <option value="family">Family</option>
-            <option value="cardiology">Cardiology</option>
-            <option value="general">General</option>
-            <option value="orthopedic">Orthopedic</option>
-        </select>
-        
-        
-        <div *ngIf="appointmentForm.get('department')?.invalid 
-        && appointmentForm.get('department')?.touched">
-        Department is required</div>
+<div class="container text-center my-5">
+  <form [formGroup]="appointmentForm">
+    <div class="form-group">
+      <label for="department">Choose a Department:</label>
+      <select id="department" class="form-control" formControlName="department" (change)="fetchDoctors()">
+        <option value="family">Family</option>
+        <option value="cardiology">Cardiology</option>
+        <option value="general">General</option>
+        <option value="orthopedic">Orthopedic</option>
+      </select>
     </div>
 
+    <div class="form-group">
+      <label for="doctor">Choose a Doctor:</label>
+      <select id="doctor" class="form-control" formControlName="doctor" (change)="fetchAppointments()">
+        <option value="">Select Doctor</option>
+        <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+      </select>
+    </div>
+  </form>
 
-    <div>
-        <label class="form-label mx-2">Choose a doctor</label>
-        <select id="doctor" formControlName="doctor">
-          <option value="">Select Doctor</option>
-          <option *ngFor="let doctor of doctorName" [value]="doctor">{{ doctor }}</option>
-        </select>
-      </div>
-
-    
-
-    
-
-
-    <button class="btn btn-primary" type="submit" [disabled]="appointmentForm.invalid">Submit</button>
-</form>
-
-
-<div class="appointment-container">
-    <h3 class="mt-5 mb-3">Available Appointments</h3>
-    
-    <div class="table">
+  <div *ngIf="availableAppointments.length > 0" class="appointment-container mt-3">
+    <h3>Available Appointments</h3>
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Time</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let appointment of availableAppointments">
-                <td>{{appointment.time}}</td>
-                <td>{{appointment.date}}</td>
-                <td>{{appointment.department}}</td>
-                <td>{{appointment.doctorName}}</td>
-                <td>
-                    <button class="btn btn-sm btn-danger mx-1" (click)="bookAppointment(appointment.id)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of availableAppointments">
+          <td>{{ appointment.time }}</td>
+          <td>{{ appointment.date }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="bookAppointment(appointment.appointmentID)">Book</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
-    </div>
-    
-    <ul *ngIf="availableAppointments.length; else noAppointments">
-    
-    </ul>
-    
-    <ng-template #noAppointments>
-        <p>No appointments available.</p>
-    </ng-template>
+  </div>
 </div>

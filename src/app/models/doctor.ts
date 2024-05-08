@@ -1,4 +1,5 @@
 export interface Doctor {
     fname:string,
-    lname:string
+    lname:string,
+    doctorID:string
 }
