@@ -49,17 +49,31 @@ export class PatientsAppointmentListComponent {
 }
 
   
-    openPrescribeDialog(): void {
-      const dialogRef = this.dialog.open(PrescribeFormComponent, {
-        width: '250px',
-        data: { /* data if needed */ }
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed', result);
-        // Handle result if needed
-      });
+openPrescribeDialog(appointmentID: string): void {
+  const dialogRef = this.dialog.open(PrescribeFormComponent, {
+    width: '300px',
+    data: { appid: appointmentID }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.addPrescription(result.appid, result.prescription, result.dosage, result.expiryDate)
     }
+  });
+}
+
+addPrescription(appointmentID: string, prescription: string, dosage: string, expiryDate: Date): void {
+  const prescriptionData = {
+    prescription: prescription,
+    appid: appointmentID,
+    dosage: dosage,
+    expiryDate: expiryDate
+  };
+  this.appointmentService.addPrescriptions(prescriptionData).subscribe({
+    next: () => alert('Prescription added successfully!'),
+    error: () => alert('Failed to add prescription')
+  });
+}
     ngOnInit(): void {
       this.appointmentService.getDoctorAppointments().subscribe(patientAppointments => {
         this.patientAppointments = patientAppointments

@@ -10,6 +10,12 @@ import { Diagnosis } from '../models/diagnosis';
 })
 export class PatientProfileComponent implements OnInit{
   
+  activeTab = 'diagnosis';  // Default to diagnosis
+
+  setActiveTab(tab: string): void {
+    this.activeTab = tab;
+  }
+
   prescriptions:Prescription[] = []
   diagnosis: Diagnosis[] = [];
   constructor(private patientService: AppointmentService){

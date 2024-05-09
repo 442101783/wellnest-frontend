@@ -53,16 +53,16 @@ getDoctorAppointments(): Observable<Appointment[]> {
 
 }
 getPrescriptions(): Observable<Prescription[]>{
-  return this.http.get<Prescription[]>(this.apiUrl+"/getPrescriptions")
+  return this.http.get<Prescription[]>(this.apiUrl+"/myPrescriptions")
 
 }
-addPrescriptions(prescription:Prescription): Observable<void>{
-  return this.http.post<void>(this.apiUrl+"/addPrescription",{"prescription":prescription})
+addPrescriptions(prescriptionData: { prescription: string; appid: string; dosage: string; expiryDate: Date }): Observable<void>{
+  return this.http.post<void>(this.apiUrl+"/addPrescription",prescriptionData)
 
 }
 
 getDiagnosis(): Observable<Diagnosis[]>{
-  return this.http.get<Diagnosis[]>(this.apiUrl+"/getDiagnosis")
+  return this.http.get<Diagnosis[]>(this.apiUrl+"/myDiagnosis")
 
 }
 addDiagnosis(diagnosisData: { diagnosis: string, appid: string, status: string }): Observable<any> {

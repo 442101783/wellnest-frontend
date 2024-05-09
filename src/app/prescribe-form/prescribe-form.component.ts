@@ -1,27 +1,56 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-diagnose-form',
+  selector: 'app-prescribe-form',
   template: `
     <h1 mat-dialog-title>Prescribe</h1>
-    <div mat-dialog-content>
-      <form>
-        <!-- Form fields here -->
-      </form>
-    </div>
+    <form [formGroup]="form" mat-dialog-content>
+      <mat-form-field>
+        <input matInput placeholder="Enter Prescription" formControlName="prescription">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Dosage</mat-label>
+        <mat-select formControlName="dosage">
+          <mat-option value="once a day">Once a day</mat-option>
+          <mat-option value="twice a day">Twice a day</mat-option>
+          <mat-option value="three times a day">Three times a day</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="expiryPicker" placeholder="Expiry Date" formControlName="expiryDate">
+        <mat-datepicker-toggle matSuffix [for]="expiryPicker"></mat-datepicker-toggle>
+        <mat-datepicker #expiryPicker></mat-datepicker>
+      </mat-form-field>
+    </form>
     <div mat-dialog-actions>
       <button mat-button (click)="onCancel()">Cancel</button>
-      <button mat-button [mat-dialog-close]="formData" cdkFocusInitial>Submit</button>
+      <button mat-button (click)="onSubmit()">Submit</button>
     </div>
-  `
+  `,
 })
 export class PrescribeFormComponent {
-  formData = {};
+  form: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<PrescribeFormComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<PrescribeFormComponent>,
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.form = this.fb.group({
+      prescription: [''],
+      dosage: ['once a day'],
+      expiryDate: [''],
+      appid: [this.data.appid] 
+    });
+  }
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit(): void {
+    this.dialogRef.close(this.form.value);
   }
 }

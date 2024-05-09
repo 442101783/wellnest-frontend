@@ -1,32 +1,35 @@
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    width: 100%;
 }
 
 .patient-profile-container {
+    display: flex;
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
     background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 12px;
-    width: 90vw;
-    height: 65vh; 
-    overflow: auto;
+    overflow: hidden;
+    width: 70%;
+    height: 300px;
+    margin: auto; 
+    flex-direction: column; 
+
 }
 
 .custom-table {
-    width: 100%;
-    margin: 10px 0;
+    overflow-y: auto; 
+    max-height: 450px; 
 }
 
 .table {
     width: 100%;
     table-layout: fixed;
-    overflow: auto;
 }
 
 th, td {
@@ -39,21 +42,34 @@ thead th {
     background-color: #f9f9f9;
 }
 
-.col-md-6 {
-    width: 50%;
-    float: left;
-    padding: 0 10px;
-    border: 1px solid black;
+
+
+
+.tab-bar {
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  
+  .tab-bar button {
+    margin: 0 10px; 
+    padding: 10px 20px;
+    background-color: navajowhite; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+  }
+  
+  .tab-bar button:hover {
+    background-color: #e0e0e0;
 }
 
-.row {
-    width: 100%;
-    height: 50%;
-    clear: both;
-}
-
-h3 {
-    margin-top: 0;
-    background-color: white;
-    border: 1px solid black;
-}
+  .tab-bar button.active, .tab-bar button:focus{
+    background-color: #0090a3; 
+  }
+  
+  
+  .content {
+    padding: 20px;
+    flex-grow: 1; 
+    overflow-y: auto; 
+ }
