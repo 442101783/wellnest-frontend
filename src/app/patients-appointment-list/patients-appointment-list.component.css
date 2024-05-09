@@ -21,9 +21,29 @@
     
 }
 
-.table{
-   
+.table-wrapper {
+    overflow-y: auto;  /* Enables vertical scrolling */
+    height: 500px;  /* Fixed height to force scroll */
+}
 
+.table {
     width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
     
+}
+
+tbody tr {
+    background-color: #fff;
 }

@@ -13,9 +13,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       <mat-form-field>
         <mat-label>Dosage</mat-label>
         <mat-select formControlName="dosage">
-          <mat-option value="once a day">Once a day</mat-option>
-          <mat-option value="twice a day">Twice a day</mat-option>
-          <mat-option value="three times a day">Three times a day</mat-option>
+          <mat-option value="1">Once a day</mat-option>
+          <mat-option value="2">Twice a day</mat-option>
+          <mat-option value="3">Three times a day</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
@@ -40,7 +40,7 @@ export class PrescribeFormComponent {
   ) {
     this.form = this.fb.group({
       prescription: [''],
-      dosage: ['once a day'],
+      dosage: [''],
       expiryDate: [''],
       appid: [this.data.appid] 
     });

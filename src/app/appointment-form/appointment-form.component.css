@@ -1,33 +1,145 @@
-.container {
-    width: 50%;
-    margin: auto;
-    padding-top: 20px;
+.book {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image: url("bg.png");
+  background-size: cover;
+  background-position: center;
   }
   
-  .form-group {
+  .selection-container {
+    position: absolute; /* Absolute positioning to place it in the center */
+    top: 20%; /* 40% from the top */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align center */
+    display: flex;
+    width: 500px; /* Adjust based on your design requirements */
+    margin-right: 20px;
+    flex-direction: row; /* Changed to row for side-by-side layout */
+  flex-wrap: wrap; /* Allows items to wrap as needed */
+}
+
+.selection-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Ensures form controls are in a row */
+    width: 100%; /* Take full width of container */
+    flex-wrap: wrap; /* Wrap items if space is insufficient */
+    
+    
+}
+
+.form-group {
     margin-bottom: 20px;
-  }
-  
-  .form-control {
+    flex: 1; /* Each form group takes equal space */
+    min-width: 150px; /* Minimum width of each form group */
+}
+
+.form-control {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .table {
-    margin-top: 20px;
+}
+
+.appointment-container {
+  position: absolute; /* Absolute positioning to place it in the center */
+  top: 60%; /* 40% from the top */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Align center */
+    flex-grow: 1;
+    max-height: 700px; /* Adjust as needed */
+    width: 60%; /* Adjust based on your design requirements */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table-wrapper {
+    overflow-y: auto;  /* Enables vertical scrolling */
+    height: 500px;  /* Fixed height to force scroll */
+}
+
+.table {
     width: 100%;
-  }
-  
-  .btn-primary {
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
+    
+}
+
+tbody tr {
+    background-color: #fff;
+}
+
+.btn-primary {
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
     border-color: #004085;
-  }
-  
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 0 20px;
+}
+
+.nav {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav_logo, .button {
+    color: #fff;
+}
+
+.nav_logo {
+    font-size: 25px;
+}
+
+.button {
+    padding: 6px 24px;
+    border: 2px solid #fff;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.logo {
+    margin-top: 10px;
+    margin-right: 20px;
+}
+

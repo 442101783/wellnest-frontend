@@ -1,43 +1,56 @@
-<div class="container text-center my-5">
-  <form [formGroup]="appointmentForm">
-    <div class="form-group">
-      <label for="department">Choose a Department:</label>
-      <select id="department" class="form-control" formControlName="department" (change)="fetchDoctors()">
-        <option value="family">Family</option>
-        <option value="cardiology">Cardiology</option>
-        <option value="general">General</option>
-        <option value="orthopedic">Orthopedic</option>
-      </select>
-    </div>
+<body>
+  <header class="header">
+      <nav class="nav">
+          <a class="nav_logo"><img src="assets/logo-transparent.png" alt="Logo" height="100px" class="logo">WellNest</a>
+          <button routerLink="/patient-page" type="button" class="button">Back</button>
+      </nav>
+  </header>
 
-    <div class="form-group">
-      <label for="doctor">Choose a Doctor:</label>
-      <select id="doctor" class="form-control" formControlName="doctor" (change)="fetchAppointments()">
-        <option value="">Select Doctor</option>
-        <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
-      </select>
-    </div>
-  </form>
+  <section class="book">
+      <div class="selection-container">
+          <form [formGroup]="appointmentForm" class="selection-form">
+              <div class="form-group">
+                  <label for="department">Choose a Department:</label>
+                  <select id="department" class="form-control" formControlName="department" (change)="fetchDoctors()">
+                      <option value="family">Family</option>
+                      <option value="cardiology">Cardiology</option>
+                      <option value="general">General</option>
+                      <option value="orthopedic">Orthopedic</option>
+                  </select>
+              </div>
 
-  <div *ngIf="availableAppointments.length > 0" class="appointment-container mt-3">
-    <h3>Available Appointments</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let appointment of availableAppointments">
-          <td>{{ appointment.time }}</td>
-          <td>{{ appointment.date }}</td>
-          <td>
-            <button class="btn btn-primary" (click)="bookAppointment(appointment.appointmentID)">Book</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+              <div class="form-group">
+                  <label for="doctor">Choose a Doctor:</label>
+                  <select id="doctor" class="form-control" formControlName="doctor" (change)="fetchAppointments()">
+                      <option value="">Select Doctor</option>
+                      <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+                  </select>
+              </div>
+          </form>
+      </div>
+
+      <div *ngIf="availableAppointments.length > 0" class="appointment-container">
+          <h3>Available Appointments</h3>
+          <div class="table-wrapper">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Time</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let appointment of availableAppointments">
+                      <td>{{ appointment.time }}</td>
+                      <td>{{ appointment.date }}</td>
+                      <td>
+                          <button class="btn btn-primary" (click)="bookAppointment(appointment.appointmentID)">Book</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+  </section>
+</body>

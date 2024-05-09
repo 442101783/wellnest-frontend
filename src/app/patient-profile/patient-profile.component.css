@@ -1,75 +1,72 @@
 :host {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .patient-profile-container {
-    display: flex;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 70%;
-    height: 300px;
-    margin: auto; 
-    flex-direction: column; 
-
+  display: flex;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 70%;
+  height: 350px;  /* Adjust if necessary */
+  margin: auto; 
+  flex-direction: column; 
 }
 
 .custom-table {
-    overflow-y: auto; 
-    max-height: 450px; 
+  overflow-y: auto;  /* Enables scrolling */
+  max-height: 300px;  /* Adjust based on the available space */
 }
 
 .table {
-    width: 100%;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse; /* For better border handling */
 }
 
 th, td {
-    border: 1px solid #ccc;
-    text-align: left;
-    padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
 }
 
 thead th {
-    background-color: #f9f9f9;
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  z-index: 10;  /* Ensures the header is above other content */
 }
-
-
-
 
 .tab-bar {
-    text-align: center;
-    flex-wrap: wrap;
-  }
-  
-  .tab-bar button {
-    margin: 0 10px; 
-    padding: 10px 20px;
-    background-color: navajowhite; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-  }
-  
-  .tab-bar button:hover {
-    background-color: #e0e0e0;
+  text-align: center;
 }
 
-  .tab-bar button.active, .tab-bar button:focus{
-    background-color: #0090a3; 
-  }
-  
-  
-  .content {
-    padding: 20px;
-    flex-grow: 1; 
-    overflow-y: auto; 
- }
+.tab-bar button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: navajowhite;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tab-bar button:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-bar button.active, .tab-bar button:focus {
+  background-color: #0090a3;
+}
+
+.content {
+  padding: 20px;
+  flex-grow: 1;
+  overflow: hidden;
+}

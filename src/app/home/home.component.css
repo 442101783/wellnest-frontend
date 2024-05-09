@@ -20,9 +20,14 @@
   }
 
   .nav_link,
+  .nav_logo,
   .button{
     color: #fff
   }
+
+  .nav_logo{
+    font-size: 25px;
+}
 
 .nav_link{
   cursor: pointer;
@@ -111,7 +116,6 @@
   }
 
   .logo{
-position: fixed;
-left: 5%;
-
+    margin-top: 10px;
+    margin-right: 20px;
   }

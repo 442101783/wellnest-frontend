@@ -1,29 +1,53 @@
 :host{
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    width: 100%;
 
 }
 
 .appointment-container{
-
+        display: flex;
         position: absolute;
-        top: 85%;
+        top: 75%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 999;
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 2px 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
         border-radius: 12px;
-        width: 90vw;
+        overflow: hidden;
+        width: 70%;
+        height: 400px;
+        margin: auto;
+        flex-direction: column;
         
     
 }
 
-.table{
-   
+.table-wrapper {
+    overflow-y: auto;  /* Enables vertical scrolling */
+    height: 300px;  /* Fixed height to force scroll */
+}
 
+.table {
     width: 100%;
+    border-collapse: collapse; /* Collapse borders */
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
     
+}
+
+tbody tr {
+    background-color: #fff;
 }

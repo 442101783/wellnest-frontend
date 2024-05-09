@@ -56,7 +56,7 @@ getPrescriptions(): Observable<Prescription[]>{
   return this.http.get<Prescription[]>(this.apiUrl+"/myPrescriptions")
 
 }
-addPrescriptions(prescriptionData: { prescription: string; appid: string; dosage: string; expiryDate: Date }): Observable<void>{
+addPrescriptions(prescriptionData: Prescription): Observable<void>{
   return this.http.post<void>(this.apiUrl+"/addPrescription",prescriptionData)
 
 }

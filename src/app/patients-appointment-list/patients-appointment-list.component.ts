@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DiagnoseFormComponent } from '../diagnose-form/diagnose-form.component';
 import { PrescribeFormComponent } from '../prescribe-form/prescribe-form.component';
 import { Diagnosis } from '../models/diagnosis';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-patients-appointment-list',
@@ -63,12 +64,15 @@ openPrescribeDialog(appointmentID: string): void {
   });
 }
 
-addPrescription(appointmentID: string, prescription: string, dosage: string, expiryDate: Date): void {
+addPrescription(appointmentID: string, prescription: string, dosage: number, expiryDate: Date): void {
+  
+  const formattedExpiryDate = formatDate(expiryDate, 'yyyy-MM-dd', 'en-US');
+
   const prescriptionData = {
     prescription: prescription,
     appid: appointmentID,
     dosage: dosage,
-    expiryDate: expiryDate
+    expiryDate: formattedExpiryDate
   };
   this.appointmentService.addPrescriptions(prescriptionData).subscribe({
     next: () => alert('Prescription added successfully!'),
