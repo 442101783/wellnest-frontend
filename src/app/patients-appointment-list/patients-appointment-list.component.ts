@@ -1,3 +1,4 @@
+import { Prescription } from './../models/prescription';
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../appointment/appointment.service';
 import { Appointment } from '../models/appointment';
