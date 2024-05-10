@@ -1,7 +1,5 @@
 import { Appointment } from './../models/appointment';
-import { Patient } from './../models/patient';
 import { Injectable,} from '@angular/core';
-import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor';
@@ -71,6 +69,10 @@ addDiagnosis(diagnosisData: { diagnosis: string, appid: string, status: string }
 
 endAppointment(appID:string): Observable<void>{
   return this.http.post<void>(this.apiUrl+ "/endAppointment", {"appid": appID})
+}
+
+addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: string , temprature: string , height: string , weight: string }): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/addVitals`, vitalsData);
 }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import { VitalsFormComponent } from '../vitals-form/vitals-form.component';
+import { AppointmentService } from '../appointment/appointment.service';
 @Component({
   selector: 'app-nurse-home-page',
   templateUrl: './nurse-home-page.component.html',
@@ -9,15 +10,15 @@ import { VitalsFormComponent } from '../vitals-form/vitals-form.component';
 })
 export class NurseHomePageComponent {
 
-  constructor(private authService: AuthenticationService, private dialog: MatDialog) {}
+  constructor(private authService: AuthenticationService, private dialog: MatDialog,private nurseService:AppointmentService) {}
   
-  openDialog(phoneNumber: string): void {
+  openDialog(): void {
     const dialogRef = this.dialog.open(VitalsFormComponent, {
-      width: '250px',
-      data: { phoneNumber: phoneNumber }
+      width: '800px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.nurseService.addVitals(result)
       console.log('The dialog was closed', result);
     });
   }
