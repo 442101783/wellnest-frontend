@@ -22,12 +22,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NurseHomePageComponent } from './nurse-home-page/nurse-home-page.component';
+import { VitalsFormComponent } from './vitals-form/vitals-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DiagnoseFormComponent,
-    PrescribeFormComponent
+    PrescribeFormComponent,
+    NurseHomePageComponent,
+    VitalsFormComponent
   
     
   ],

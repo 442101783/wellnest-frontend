@@ -22,12 +22,18 @@ ngOnInit(): void {
 
   }
 
+  editAppointment(appointmentID:string){
 
-  deleteAppointment(id: string){
+    
 
-    this.appointmentService.deleteAppointment(id).subscribe( () => {
-      console.log("delete request")
-    })
+
+  }
+
+  deleteAppointment(appointmentID: string){
+    this.appointmentService.deleteAppointment(appointmentID).subscribe({
+      next: () => console.log('Appointment deleted successfully'),
+      error: (error) => console.error('Error deleting appointment:', error)
+    });
 
   }
 }

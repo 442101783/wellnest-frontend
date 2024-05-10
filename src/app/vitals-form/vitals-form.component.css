@@ -1,0 +1,18 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Ensures consistent spacing between fields */
+  }
+  
+  mat-form-field {
+    width: 100%; /* Full width fields within the dialog */
+  }
+  
+  mat-dialog-actions {
+    justify-content: flex-end;
+    padding: 10px 0;
+  }
+  
+  button {
+    margin-left: 10px;
+  }

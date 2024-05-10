@@ -8,6 +8,7 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { HomeComponent } from './home/home.component';
 import { DoctorHomePageComponent } from './doctor-home-page/doctor-home-page.component';
+import { NurseHomePageComponent } from './nurse-home-page/nurse-home-page.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"edit/:appointmentID",component:AppointmentFormComponent},
   {path:"doctor-page",component:DoctorHomePageComponent},
   {path:"patient-profile",component:PatientProfileComponent},
+  {path:"nurse-page",component:NurseHomePageComponent}
 
 
 

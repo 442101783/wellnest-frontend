@@ -39,6 +39,8 @@ handleLogin(credentials: {phoneNumber: string; password: string}){
         this.router.navigate(['/patient-page']);
       } else if (response && response.role === 'doctor') {
         this.router.navigate(['/doctor-page']);
+      } else if (response && response.role === 'nurse'){
+        this.router.navigate(['/nurse-page']);
       } else{
       console.log("failed to log in")
       alert("failed to login")

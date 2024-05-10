@@ -45,7 +45,7 @@
                       <td>{{ appointment.time }}</td>
                       <td>{{ appointment.date }}</td>
                       <td>
-                          <button class="btn btn-primary" (click)="bookAppointment(appointment.appointmentID)">Book</button>
+                          <button class="btn btn-primary" routerLink="/patient-page" (click)="bookAppointment(appointment.appointmentID)">Book</button>
                       </td>
                   </tr>
               </tbody>

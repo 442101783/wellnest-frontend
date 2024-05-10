@@ -69,6 +69,8 @@ addDiagnosis(diagnosisData: { diagnosis: string, appid: string, status: string }
   return this.http.post<any>(`${this.apiUrl}/addDiagnosis`, diagnosisData);
 }
 
-
+endAppointment(appID:string): Observable<void>{
+  return this.http.post<void>(this.apiUrl+ "/endAppointment", {"appid": appID})
+}
 
 }

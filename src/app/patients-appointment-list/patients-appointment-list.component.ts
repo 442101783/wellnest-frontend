@@ -66,8 +66,18 @@ openPrescribeDialog(appointmentID: string): void {
 
 addPrescription(appointmentID: string, prescription: string, dosage: number, expiryDate: Date): void {
   
-  const formattedExpiryDate = formatDate(expiryDate, 'yyyy-MM-dd', 'en-US');
+  let formattedExpiryDate = '';
 
+  // Check if expiryDate is provided and is a valid date
+  if (expiryDate) {
+    try {
+      formattedExpiryDate = formatDate(expiryDate, 'yyyy-MM-dd', 'en-US');
+    } catch (error) {
+      alert('Failed to format the expiry date. Please enter a valid date.');
+      console.error('Date formatting error:', error);
+      return; // Stop execution if the date formatting fails
+    }
+  }
   const prescriptionData = {
     prescription: prescription,
     appid: appointmentID,
@@ -86,6 +96,11 @@ addPrescription(appointmentID: string, prescription: string, dosage: number, exp
   
 }
 
-
+endAppointment(appointmentID: string){
+  this.appointmentService.endAppointment(appointmentID).subscribe({
+    next: () => console.log('Appointment ended successfully'),
+    error: (error) => console.error('Error ending appointment:', error)
+  });
+}
 
 }

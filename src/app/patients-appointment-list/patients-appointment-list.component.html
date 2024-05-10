@@ -22,7 +22,7 @@
                 <td>
                     <button class="btn btn-sm btn-primary mx-1" (click)="openDiagnoseDialog(appointment.appointmentID)">Diagnose</button>
                     <button class="btn btn-sm btn-success mx-1" (click)="openPrescribeDialog(appointment.appointmentID)">Prescribe</button>
-                    <button class="btn btn-sm btn-danger mx-1" >End</button>
+                    <button class="btn btn-sm btn-danger mx-1" (click)="endAppointment(appointment.appointmentID)" >End</button>
 
                 </td>
             </tr>

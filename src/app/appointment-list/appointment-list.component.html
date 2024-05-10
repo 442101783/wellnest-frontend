@@ -8,6 +8,7 @@
                     <th>Date</th>
                     <th>Department</th>
                     <th>Doctor</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -17,9 +18,10 @@
                     <td>{{appointment.date}}</td>
                     <td>{{appointment.department | titlecase}}</td>
                     <td>{{appointment.doctorName | titlecase}}</td>
+                    <td>{{appointment.appStatus | titlecase}}</td>
                     <td>
-                        <button class="btn btn-sm btn-danger mx-1" (click)="deleteAppointment(appointment.appointmentID)">Delete</button>
-                        <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/edit']">Edit</button>
+                        <button *ngIf="appointment.appStatus == 'upcoming'" class="btn btn-sm btn-secondary mx-1" (click)="editAppointment(appointment.appointmentID)">Edit</button>
+                        <button *ngIf="appointment.appStatus == 'upcoming'" class="btn btn-sm btn-danger mx-1" (click)="deleteAppointment(appointment.appointmentID)">Delete</button>
                     </td>
                 </tr>
             </tbody>

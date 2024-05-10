@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Add Patient Vitals</h2>
+<mat-dialog-content class="dialog-content">
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Blood Type</mat-label>
+      <input matInput placeholder="Enter Blood Type" [(ngModel)]="bloodType">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Blood Pressure</mat-label>
+      <input matInput placeholder="Enter Blood Pressure" [(ngModel)]="bloodPressure">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Temperature</mat-label>
+      <input matInput placeholder="Enter Temperature" [(ngModel)]="temperature">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Height</mat-label>
+      <input matInput type="number" placeholder="Enter Height (in meters)" [(ngModel)]="height">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Weight</mat-label>
+      <input matInput type="number" placeholder="Enter Weight" [(ngModel)]="weight">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button color="primary" (click)="addVitals()">Submit Vitals</button>
+</mat-dialog-actions>
