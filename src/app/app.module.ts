@@ -24,6 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NurseHomePageComponent } from './nurse-home-page/nurse-home-page.component';
 import { VitalsFormComponent } from './vitals-form/vitals-form.component';
+import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VitalsFormComponent } from './vitals-form/vitals-form.component';
     DiagnoseFormComponent,
     PrescribeFormComponent,
     NurseHomePageComponent,
-    VitalsFormComponent
+    VitalsFormComponent,
+    ProfileDialogComponent
   
     
   ],

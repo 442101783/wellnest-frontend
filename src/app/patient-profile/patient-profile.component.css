@@ -23,7 +23,7 @@
 
 .custom-table {
   overflow-y: auto;  /* Enables scrolling */
-  max-height: 300px;  /* Adjust based on the available space */
+  max-height: 270px;  /* Adjust based on the available space */
 }
 
 .table {

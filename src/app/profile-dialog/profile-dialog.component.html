@@ -1,8 +1,7 @@
 <div class="patient-profile-container">
 
     <div class="tab-bar">
-          <button (click)="setActiveTab('info')">Info</button>
-          <button (click)="setActiveTab('vitals')">Vitals</button>
+          <button (click)="setActiveTab('vitals')">Info</button>
           <button (click)="setActiveTab('diagnosis')">Diagnosis</button>
           <button (click)="setActiveTab('medications')">Medications</button>
       </div>
@@ -18,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let diagnose of diagnosis">
+                            <tr *ngFor="let diagnose of diagnoses">
                                 <td>{{ diagnose.diagnosis }}</td>
                                 <td>{{ diagnose.date }}</td>
                             </tr>
@@ -27,27 +26,16 @@
                 </div>        
             
             </ng-container>
-        <ng-container *ngIf="activeTab === 'info'">
-            <div class="custom-table">
-                
-                <p><strong>Name:</strong> {{ patient.fname | titlecase }} {{ patient.lname | titlecase }}</p>
-                <p><strong>DOB:</strong> {{ patient.dob | date }}</p>
-                <p><strong>Age:</strong> {{ patient.age }}</p>
-                <p><strong>Gender:</strong> {{ patient.gender | titlecase }}</p>
-    
-            </div>        
-        
-        </ng-container>
-
         <ng-container *ngIf="activeTab === 'vitals'">
             <div class="custom-table">
                 
-                <p><strong>Blood Type:</strong> {{ patient.fname }}</p>
-                <p><strong>Blood Pressure:</strong> {{ patient.dob }}</p>
-                <p><strong>Temperature:</strong> {{ patient.age }}</p>
-                <p><strong>Height:</strong> {{ patient.gender }}</p>
-                <p><strong>Weight:</strong> {{ patient.gender }}</p>
-    
+                <p>
+                    Blood Type:<br>
+                    Height:<br>
+                    Weight:<br>
+                    BMI:<br>
+                    Blood Pressure:
+                </p>
             </div>        
         
         </ng-container>
