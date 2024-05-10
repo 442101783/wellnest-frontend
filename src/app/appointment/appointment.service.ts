@@ -6,6 +6,8 @@ import { Doctor } from '../models/doctor';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { Prescription } from '../models/prescription';
 import { Diagnosis } from '../models/diagnosis';
+import { Vitals } from '../models/vitals';
+import { Patient } from '../models/patient';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,8 +52,10 @@ getDoctorAppointments(): Observable<Appointment[]> {
   return this.http.get<Appointment[]>(this.apiUrl+ "/doctorAppointments")
 
 }
-getPrescriptions(): Observable<Prescription[]>{
-  return this.http.get<Prescription[]>(this.apiUrl+"/myPrescriptions")
+
+
+getPrescriptions(patientID:string): Observable<Prescription[]>{
+  return this.http.post<Prescription[]>(this.apiUrl+"/myPrescriptions", {"patientID":patientID})
 
 }
 addPrescriptions(prescriptionData: Prescription): Observable<void>{
@@ -59,8 +63,8 @@ addPrescriptions(prescriptionData: Prescription): Observable<void>{
 
 }
 
-getDiagnosis(): Observable<Diagnosis[]>{
-  return this.http.get<Diagnosis[]>(this.apiUrl+"/myDiagnosis")
+getDiagnosis(patientID:string): Observable<Diagnosis[]>{
+  return this.http.post<Diagnosis[]>(this.apiUrl+"/myDiagnosis", {"patientID":patientID})
 
 }
 addDiagnosis(diagnosisData: { diagnosis: string, appid: string, status: string }): Observable<any> {
@@ -75,4 +79,14 @@ addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: s
   return this.http.post<any>(`${this.apiUrl}/addVitals`, vitalsData);
 }
 
+getPatient(patientID:string): Observable<Patient>{
+  return this.http.post<Patient>(this.apiUrl+"/getPatient", {"patientID" : patientID})
+
 }
+
+myVitals(): Observable<Vitals[]>{
+  return this.http.get<Vitals[]>(this.apiUrl+"/myVitals")
+
+}
+
+

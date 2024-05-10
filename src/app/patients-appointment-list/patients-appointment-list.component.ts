@@ -7,6 +7,7 @@ import { DiagnoseFormComponent } from '../diagnose-form/diagnose-form.component'
 import { PrescribeFormComponent } from '../prescribe-form/prescribe-form.component';
 import { Diagnosis } from '../models/diagnosis';
 import { formatDate } from '@angular/common';
+import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
 
 @Component({
   selector: 'app-patients-appointment-list',
@@ -102,6 +103,17 @@ endAppointment(appointmentID: string){
     next: () => console.log('Appointment ended successfully'),
     error: (error) => console.error('Error ending appointment:', error)
   });
+}
+
+openProfileDialog(patientID: string){
+
+  const dialogRef = this.dialog.open(ProfileDialogComponent, {
+    width: '600px',
+    height:'600px',
+    data: { patientID: patientID }
+  });
+
+
 }
 
 }

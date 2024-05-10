@@ -1,4 +1,9 @@
-export interface Patient {
-    patientID:string
+import { User } from "./user";
+
+export interface Patient extends User {
+    patientID:string,
+    age:string
+
+
     
 }
