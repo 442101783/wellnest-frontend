@@ -42,7 +42,7 @@
               </thead>
               <tbody>
                   <tr *ngFor="let appointment of availableAppointments">
-                      <td>{{ appointment.time }}</td>
+                      <td>{{ appointment.time | convertTime}}</td>
                       <td>{{ appointment.date }}</td>
                       <td>
                           <button class="btn btn-primary" routerLink="/patient-page" (click)="bookAppointment(appointment.appointmentID)">Book</button>

@@ -81,7 +81,7 @@ getPatient(patientID:string): Observable<Patient>{
 
 }
 
-myVitals(): Observable<Vitals[]>{
+getVitals(): Observable<Vitals[]>{
   return this.http.get<Vitals[]>(this.apiUrl+"/myVitals")
 
 }

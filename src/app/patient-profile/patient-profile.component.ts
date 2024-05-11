@@ -3,6 +3,7 @@ import { AppointmentService } from '../appointment/appointment.service';
 import { Prescription } from '../models/prescription';
 import { Diagnosis } from '../models/diagnosis';
 import { Patient } from '../models/patient';
+import { Vitals } from '../models/vitals';
 
 @Component({
   selector: 'app-patient-profile',
@@ -17,8 +18,9 @@ export class PatientProfileComponent implements OnInit{
     this.activeTab = tab;
   }
   patient!: Patient;
-  prescriptions:Prescription[] = []
+  prescriptions:Prescription[] = [];
   diagnosis: Diagnosis[] = [];
+  vitals: Vitals[] = [];
 
   constructor(private patientService: AppointmentService){
 
@@ -36,7 +38,13 @@ export class PatientProfileComponent implements OnInit{
 
     this.patientService.getPatient("").subscribe(patient => {
       this.patient = patient
-    })
+    });
+
+    this.patientService.getVitals().subscribe({
+      next: (vitals) => this.vitals = vitals,
+      error: (error) => console.error('Failed to fetch vitals', error)
+
+    });
   }
 
   getPatient(patientID: string): void {
