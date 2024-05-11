@@ -76,6 +76,7 @@
                         <tr>
                             <th>Prescription</th>
                             <th>Dosage</th>
+                            <th>Issue Date</th>
                             <th>Termination Date</th>
                         </tr>
                     </thead>
@@ -83,6 +84,7 @@
                         <tr *ngFor="let prescription of prescriptions">
                             <td>{{ prescription.prescription }}</td>
                             <td>{{ prescription.dosage }}</td>
+                            <td>{{ prescription.date }}</td>
                             <td>{{ prescription.expiryDate }}</td>
                         </tr>
                     </tbody>

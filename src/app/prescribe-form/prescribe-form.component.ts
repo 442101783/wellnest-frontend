@@ -28,7 +28,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       <button mat-button (click)="onCancel()">Cancel</button>
       <button mat-button (click)="onSubmit()">Submit</button>
     </div>
-  `,
+  `
 })
 export class PrescribeFormComponent {
   form: FormGroup;

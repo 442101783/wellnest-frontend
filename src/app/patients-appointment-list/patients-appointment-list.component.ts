@@ -76,13 +76,14 @@ addPrescription(appointmentID: string, prescription: string, dosage: number, exp
     } catch (error) {
       alert('Failed to format the expiry date. Please enter a valid date.');
       console.error('Date formatting error:', error);
-      return; // Stop execution if the date formatting fails
+      return; 
     }
   }
   const prescriptionData = {
     prescription: prescription,
     appid: appointmentID,
     dosage: dosage,
+    date:formattedExpiryDate,
     expiryDate: formattedExpiryDate
   };
   this.appointmentService.addPrescriptions(prescriptionData).subscribe({

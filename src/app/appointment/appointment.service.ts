@@ -1,7 +1,5 @@
 import { Appointment } from './../models/appointment';
-import { Patient } from './../models/patient';
 import { Injectable,} from '@angular/core';
-import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor';
@@ -9,6 +7,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 import { Prescription } from '../models/prescription';
 import { Diagnosis } from '../models/diagnosis';
 import { Vitals } from '../models/vitals';
+import { Patient } from '../models/patient';
 @Injectable({
   providedIn: 'root'
 })
@@ -76,6 +75,10 @@ endAppointment(appID:string): Observable<void>{
   return this.http.post<void>(this.apiUrl+ "/endAppointment", {"appid": appID})
 }
 
+addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: string , temprature: string , height: string , weight: string }): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/addVitals`, vitalsData);
+}
+
 getPatient(patientID:string): Observable<Patient>{
   return this.http.post<Patient>(this.apiUrl+"/getPatient", {"patientID" : patientID})
 
@@ -86,4 +89,4 @@ getVitals(): Observable<Vitals[]>{
 
 }
 
-}
+

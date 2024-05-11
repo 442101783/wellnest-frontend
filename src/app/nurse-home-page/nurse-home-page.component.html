@@ -12,10 +12,7 @@
     
 
     <div class="nurse-container">
-        <form (submit)="openDialog(phoneInput.value)">
-            <input #phoneInput type="text" placeholder="Enter patient phone number" class="form-input">
-            <button type="submit" class="button">Submit</button>
-        </form>
+        <button mat-raised-button (click)="openDialog()" class="button">Add Vitals</button>
     </div>
     
     <section class="home">

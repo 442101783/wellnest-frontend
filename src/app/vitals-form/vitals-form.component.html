@@ -1,29 +1,41 @@
 <h2 mat-dialog-title>Add Patient Vitals</h2>
 <mat-dialog-content class="dialog-content">
-  <form>
+  <form [formGroup]="vitalForm">
+    
+
     <mat-form-field appearance="fill">
-      <mat-label>Blood Type</mat-label>
-      <input matInput placeholder="Enter Blood Type" [(ngModel)]="bloodType">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" placeholder="Enter Phone Number">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
+      <mat-label>Blood Type</mat-label>
+      <mat-select formControlName="bloodType" placeholder="Select Blood Type">
+        <mat-option *ngFor="let type of bloodTypes" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="vitalForm.get('bloodType')?.hasError">Blood Type is required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
       <mat-label>Blood Pressure</mat-label>
-      <input matInput placeholder="Enter Blood Pressure" [(ngModel)]="bloodPressure">
+      <input matInput formControlName="bloodPressure" placeholder="Enter Blood Pressure">
+      <mat-error *ngIf="vitalForm.get('bloodPressure')?.hasError">Blood Pressure is required - Format:(Number/Number)</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Temperature</mat-label>
-      <input matInput placeholder="Enter Temperature" [(ngModel)]="temperature">
+      <input matInput formControlName="temperature" placeholder="Enter Temperature in celsius" >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Height</mat-label>
-      <input matInput type="number" placeholder="Enter Height (in meters)" [(ngModel)]="height">
+      <input matInput formControlName="height" type="number" placeholder="Enter Height (M)" >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Weight</mat-label>
-      <input matInput type="number" placeholder="Enter Weight" [(ngModel)]="weight">
+      <input matInput formControlName="weight" type="number" placeholder="Enter Weight (KG)" >
     </mat-form-field>
   </form>
 </mat-dialog-content>
