@@ -4,6 +4,7 @@ export interface Vitals {
     bloodPressure: string,
     temperature: number,
     height: number,
-    weight: number
+    weight: number,
+    date: Date
     
 }

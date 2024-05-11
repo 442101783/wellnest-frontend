@@ -1,10 +1,10 @@
 <div class="patient-profile-container">
 
     <div class="tab-bar">
-          <button (click)="setActiveTab('info')">Info</button>
-          <button (click)="setActiveTab('vitals')">Vitals</button>
-          <button (click)="setActiveTab('diagnosis')">Diagnosis</button>
-          <button (click)="setActiveTab('medications')">Medications</button>
+          <button (click)="setActiveTab('info')">Information <span class="bi bi-info-square-fill text-primary"></span></button>
+          <button (click)="setActiveTab('vitals')">Vitals <span class="bi bi-clipboard2-pulse-fill text-danger"></span></button>
+          <button (click)="setActiveTab('diagnosis')">Diagnosis <span class="bi bi-file-earmark-medical-fill text-info"></span></button>
+          <button (click)="setActiveTab('medications')">Medications <span class="bi bi-capsule text-success"></span></button>
       </div>
 
       <div class="content">
@@ -51,14 +51,16 @@
                             <th>Temperature</th>
                             <th>Height</th>
                             <th>Weight</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let vital of vitals">
                             <td>{{ vital.bloodPressure }}</td>
-                            <td>{{ vital.temperature }}</td>
-                            <td>{{ vital.height }}</td>
-                            <td>{{ vital.weight }}</td>
+                            <td>{{ vital.temperature | number:'1.0-2'}} °C</td>
+                            <td>{{ vital.height | number:'1.0-2'}} m</td>
+                            <td>{{ vital.weight | number:'1.0-2'}} kg</td>
+                            <td>{{vital.date}}</td>
                         </tr>
                     </tbody>
                 </table>

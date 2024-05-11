@@ -75,7 +75,7 @@ endAppointment(appID:string): Observable<void>{
   return this.http.post<void>(this.apiUrl+ "/endAppointment", {"appid": appID})
 }
 
-addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: string , temprature: string , height: string , weight: string }): Observable<any> {
+addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: string , temprature: number , height: number , weight: number }): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}/addVitals`, vitalsData);
 }
 
@@ -89,4 +89,4 @@ getVitals(): Observable<Vitals[]>{
 
 }
 
-
+}

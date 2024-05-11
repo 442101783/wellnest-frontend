@@ -28,29 +28,27 @@ export class VitalsFormComponent {
   ) {
     
     this.vitalForm = this.formBuilder.group({
-      PhoneNumber: ['', Validators.required], 
-      bloodType: ['', Validators.required], 
-      bloodPressure: ['', [Validators.required,this.validateBloodPressure,Validators.minLength(5),Validators.maxLength(7)]],
-      temperature: ['', Validators.required],
-      height: [0, [Validators.required,Validators.maxLength(3)]],
-      weight: [0, Validators.required]
+      phoneNumber: ['', Validators.required],
+      bloodType: ['', Validators.required],
+      bloodPressure: ['', [Validators.required, this.validateBloodPressure]],
+      temperature: ['', [Validators.required, Validators.min(20), Validators.max(45)]], // reasonable human body temperature range in Celsius
+      height: [null, [Validators.required, Validators.min(0.5), Validators.max(2.5)]], // height in meters
+      weight: [null, [Validators.required, Validators.min(5), Validators.max(300)]] // weight in kilograms
     });
+    
   }
 
   addVitals(): void {
     
     if (this.vitalForm.valid) {
-      const vitals = {
-        bloodType: this.bloodType,
-        bloodPressure: this.bloodPressure,
-        temperature: this.temperature,
-        height: this.height,
-        weight: this.weight,
-        phoneNumber : this.phoneNumber
-        
-      }
-    
-      this.dialogRef.close(vitals);
+      this.vitalService.addVitals(this.vitalForm.value).subscribe({
+        next: (response) => {
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          console.error('Error submitting vitals:', err);
+        }
+      });
     }
   }
 
@@ -61,14 +59,10 @@ export class VitalsFormComponent {
   
   
   validateBloodPressure(control: AbstractControl) {
-    const bloodPressure = control.value;
-    
-    
-  
-    if (!bloodPressure.includes('/') || bloodPressure.length > 7) {
-      return { 'invalidBloodPressure': true };
+    const bloodPressurePattern = /^\d{1,3}\/\d{1,3}$/; // Example pattern: 120/80
+    if (!bloodPressurePattern.test(control.value)) {
+      return { invalidBloodPressure: true };
     }
-  
     return null;
   }
 }

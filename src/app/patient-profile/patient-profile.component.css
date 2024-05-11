@@ -6,7 +6,7 @@
 .patient-profile-container {
   display: flex;
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
@@ -17,7 +17,7 @@
   overflow: hidden;
   width: 70%;
   height: 350px;  /* Adjust if necessary */
-  margin: auto; 
+  margin: 0 auto; 
   flex-direction: column; 
 }
 
@@ -45,28 +45,39 @@ thead th {
 }
 
 .tab-bar {
-  text-align: center;
-}
+  display: flex; /* Using flex to evenly space out tabs */
+  justify-content: left; /* Center align the tabs */
+  }
 
 .tab-bar button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  background-color: navajowhite;
-  border: none;
-  border-radius: 5px;
+  flex-grow: 1; /* Each button grows equally */
+  padding: 10px 0; /* Padding adjusted for better vertical alignment */
+  background-color: #eeeeee; /* Lighter grey background for tabs */
+  border: 1px solid #ddd; /* Subtle border for definition */
+  border-radius: 5px 5px 0 0; /* Rounded top corners */
   cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover and focus */
 }
 
 .tab-bar button:hover {
-  background-color: #e0e0e0;
+  background-color: #ddd; /* Darker shade on hover */
+  color: #333; /* Darker text color for better contrast */
 }
 
 .tab-bar button.active, .tab-bar button:focus {
-  background-color: #0090a3;
+  background-color: #fff; /* Active tab matches the container background */
+  border-bottom: 1px solid #fff; /* Hide bottom border to merge with content box */
 }
 
 .content {
   padding: 20px;
   flex-grow: 1;
   overflow: hidden;
+  background-color: #fff;
+}
+
+.bi{
+  font-size: 1rem;
+
+
 }
