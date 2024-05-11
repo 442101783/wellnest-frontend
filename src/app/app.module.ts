@@ -26,6 +26,7 @@ import { NurseHomePageComponent } from './nurse-home-page/nurse-home-page.compon
 import { VitalsFormComponent } from './vitals-form/vitals-form.component';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

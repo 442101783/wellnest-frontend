@@ -84,9 +84,12 @@ getPatient(patientID:string): Observable<Patient>{
 
 }
 
-getVitals(): Observable<Vitals[]>{
-  return this.http.get<Vitals[]>(this.apiUrl+"/myVitals")
+getVitals(patientID:string): Observable<Vitals[]>{
+  return this.http.post<Vitals[]>(this.apiUrl+"/getVitals", {"patientID": patientID})
 
 }
 
+reviewAppointment(patientID:string): Observable<void>{
+  return this.http.post<void>(this.apiUrl+ "/selectAppointment", {"patient": patientID})
+}
 }

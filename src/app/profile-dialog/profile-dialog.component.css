@@ -1,0 +1,84 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.patient-profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+  margin-bottom: 20px;
+}
+
+.info-section {
+  flex: 1; /* Takes up less space */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.vitals-section {
+  flex: 3; /* Takes up more space */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.section {
+  margin-right: 20px;
+  margin-bottom: 5px;
+  border-bottom: 3px solid black;
+}
+
+.custom-table {
+  overflow-y: auto;
+  max-height: 220px;
+  
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+thead th {
+  background-color: #f9f9f9;
+  position: sticky;
+  top: 0;
+}
+
+tbody tr {
+  background-color: #fff;
+}
+
+/* Responsive adjustments might be needed for smaller screens */
+@media (max-width: 768px) {
+  .row {
+      flex-direction: column;
+  }
+
+  .section {
+      margin-right: 0; /* Remove margin between sections on small screens */
+  }
+}
+
+.h4{
+
+  border-bottom: 3px solid black;
+}

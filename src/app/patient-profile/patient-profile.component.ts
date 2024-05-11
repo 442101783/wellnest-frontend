@@ -12,7 +12,8 @@ import { Vitals } from '../models/vitals';
 })
 export class PatientProfileComponent implements OnInit{
   
-  activeTab = 'diagnosis';  // Default to diagnosis
+  activeTab = 'medications';
+  
 
   setActiveTab(tab: string): void {
     this.activeTab = tab;
@@ -21,17 +22,16 @@ export class PatientProfileComponent implements OnInit{
   prescriptions:Prescription[] = [];
   diagnosis: Diagnosis[] = [];
   vitals: Vitals[] = [];
+  latestBloodType: string = ''; 
 
-  constructor(private patientService: AppointmentService){
-
-  }
+  constructor(private patientService: AppointmentService){}
   ngOnInit(): void {
     this.patientService.getPrescriptions('').subscribe(presciptions => {
       this.prescriptions = presciptions
       
     });
-    this.patientService.getDiagnosis('').subscribe(presciptions => {
-      this.diagnosis = presciptions
+    this.patientService.getDiagnosis('').subscribe(diagnosis => {
+      this.diagnosis = diagnosis
       
     });
   
@@ -40,8 +40,14 @@ export class PatientProfileComponent implements OnInit{
       this.patient = patient
     });
 
-    this.patientService.getVitals().subscribe({
-      next: (vitals) => this.vitals = vitals,
+    this.patientService.getVitals("").subscribe({
+      next: (vitals) => {
+        
+        this.vitals = vitals
+        if (vitals.length > 0) {
+          this.latestBloodType = vitals[vitals.length - 1].bloodType;
+        }
+      },
       error: (error) => console.error('Failed to fetch vitals', error)
 
     });

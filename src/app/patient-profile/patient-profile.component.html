@@ -3,7 +3,7 @@
     <div class="tab-bar">
           <button (click)="setActiveTab('info')">Information <span class="bi bi-info-square-fill text-primary"></span></button>
           <button (click)="setActiveTab('vitals')">Vitals <span class="bi bi-clipboard2-pulse-fill text-danger"></span></button>
-          <button (click)="setActiveTab('diagnosis')">Diagnosis <span class="bi bi-file-earmark-medical-fill text-info"></span></button>
+          <button (click)="setActiveTab('diagnosis')">Diagnoses <span class="bi bi-file-earmark-medical-fill text-info"></span></button>
           <button (click)="setActiveTab('medications')">Medications <span class="bi bi-capsule text-success"></span></button>
       </div>
 
@@ -34,6 +34,8 @@
                 <p><strong>DOB:</strong> {{ patient.dob | date }}</p>
                 <p><strong>Age:</strong> {{ patient.age }}</p>
                 <p><strong>Gender:</strong> {{ patient.gender | titlecase }}</p>
+                <p><strong>Blood Type:</strong> {{ latestBloodType }}</p>
+
           
 
     
@@ -51,6 +53,7 @@
                             <th>Temperature</th>
                             <th>Height</th>
                             <th>Weight</th>
+                            <th>BMI</th>
                             <th>Date</th>
                         </tr>
                     </thead>
@@ -60,6 +63,7 @@
                             <td>{{ vital.temperature | number:'1.0-2'}} °C</td>
                             <td>{{ vital.height | number:'1.0-2'}} m</td>
                             <td>{{ vital.weight | number:'1.0-2'}} kg</td>
+                            <td>{{ vital.bmi | number: '1.0-2'}}</td>
                             <td>{{vital.date}}</td>
                         </tr>
                     </tbody>
@@ -77,7 +81,7 @@
                     <thead>
                         <tr>
                             <th>Prescription</th>
-                            <th>Dosage</th>
+                            <th>Dosage Per Day</th>
                             <th>Issue Date</th>
                             <th>Termination Date</th>
                         </tr>

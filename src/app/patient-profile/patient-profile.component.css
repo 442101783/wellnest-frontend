@@ -16,7 +16,7 @@
   border-radius: 12px;
   overflow: hidden;
   width: 70%;
-  height: 350px;  /* Adjust if necessary */
+  height: 380px;  /* Adjust if necessary */
   margin: 0 auto; 
   flex-direction: column; 
 }

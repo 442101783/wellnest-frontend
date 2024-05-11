@@ -22,7 +22,7 @@ ngOnInit(): void {
 
   }
 
-  editAppointment(appointmentID:string){
+  editAppointment(doctorID:string, oldID:string){
 
     
 

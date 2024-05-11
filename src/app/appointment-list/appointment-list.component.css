@@ -64,3 +64,14 @@ tbody tr {
     padding: 5px 10px;
     margin: 0;
 }
+
+.bi{
+    color: white;
+    border: none;
+    background-color: red;
+    padding: 3.5px;
+    padding-left: 7px;
+    padding-right: 7px;
+   border-radius: 5px;
+
+}

@@ -17,7 +17,7 @@ import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.compone
 export class PatientsAppointmentListComponent {
 
     patientAppointments:Appointment[] = [];
-    
+    diagnosisSubmitted: { [appointmentID: string]: boolean } = {};
     
     constructor(
       private dialog: MatDialog,
@@ -27,12 +27,13 @@ export class PatientsAppointmentListComponent {
     openDiagnoseDialog(appointmentID: string): void {
       const dialogRef = this.dialog.open(DiagnoseFormComponent, {
         width: '300px',
-        data: { appid: appointmentID }  // Pass the appointment ID to the dialog
+        data: { appid: appointmentID }
       });
     
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.addDiagnosis(result.appid, result.diagnosis, result.status)
+          this.diagnosisSubmitted[result.appid] = true;
         }
       });
     }
@@ -94,7 +95,12 @@ addPrescription(appointmentID: string, prescription: string, dosage: number, exp
     ngOnInit(): void {
       this.appointmentService.getDoctorAppointments().subscribe(patientAppointments => {
         this.patientAppointments = patientAppointments
+        patientAppointments.forEach(appointment => {
+          this.diagnosisSubmitted[appointment.appointmentID] = false;
       });
+      });
+
+      
   
 }
 
@@ -108,10 +114,15 @@ endAppointment(appointmentID: string){
 openProfileDialog(patientID: string){
 
   const dialogRef = this.dialog.open(ProfileDialogComponent, {
-    width: '600px',
-    height:'600px',
+    width: '90vw',
+    height:'85vh',
     data: { patientID: patientID }
   });
+
+
+}
+
+reviewAppointment(patientID:string){
 
 
 }

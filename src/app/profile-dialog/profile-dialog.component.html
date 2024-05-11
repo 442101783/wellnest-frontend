@@ -1,67 +1,108 @@
 <div class="patient-profile-container">
 
-    <div class="tab-bar">
-          <button (click)="setActiveTab('vitals')">Info</button>
-          <button (click)="setActiveTab('diagnosis')">Diagnosis</button>
-          <button (click)="setActiveTab('medications')">Medications</button>
-      </div>
-
-      <div class="content">
-        <ng-container *ngIf="activeTab === 'diagnosis'">
-            <div class="custom-table">            
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Diagnose</th>
-                                <th>Issue Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let diagnose of diagnoses">
-                                <td>{{ diagnose.diagnosis }}</td>
-                                <td>{{ diagnose.date }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>        
-            
-            </ng-container>
-        <ng-container *ngIf="activeTab === 'vitals'">
+    <div class="row">
+        <div class="section info-section">
+            <h4>Information</h4>
             <div class="custom-table">
                 
-                <p>
-                    Blood Type:<br>
-                    Height:<br>
-                    Weight:<br>
-                    BMI:<br>
-                    Blood Pressure:
-                </p>
-            </div>        
-        
-        </ng-container>
+                <p><strong>Name:</strong> {{ patient.fname | titlecase }} {{ patient.lname | titlecase }}</p>
+                <p><strong>DOB:</strong> {{ patient.dob | date }}</p>
+                <p><strong>Age:</strong> {{ patient.age }}</p>
+                <p><strong>Gender:</strong> {{ patient.gender | titlecase }}</p>
+                <p><strong>Blood Type:</strong> {{ patient.gender | titlecase }}</p>
 
-        <ng-container *ngIf="activeTab === 'medications'">
+    
+            </div>        
+        </div>
+
+        <div class="section vitals-section">
+            <h4>Vitals</h4>
             <div class="custom-table">
                 
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Prescription</th>
-                            <th>Dosage</th>
-                            <th>Termination Date</th>
+                            <th>Blood Pressure</th>
+                            <th>Temperature</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>BMI</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let prescription of prescriptions">
-                            <td>{{ prescription.prescription }}</td>
-                            <td>{{ prescription.dosage }}</td>
-                            <td>{{ prescription.expiryDate }}</td>
+                        <tr *ngFor="let vital of vitals">
+                            <td>{{ vital.bloodPressure }}</td>
+                            <td>{{ vital.temperature | number:'1.0-2'}} °C</td>
+                            <td>{{ vital.height | number:'1.0-2'}} m</td>
+                            <td>{{ vital.weight | number:'1.0-2'}} kg</td>
+                            <td>{{ vital.bmi | number:'1.0-2'}}</td>
+                            <td>{{vital.date}}</td>
                         </tr>
                     </tbody>
                 </table>
+              
+    
             </div>        
+        </div>
+    </div>
+
+
+    <div class="section">
+
+        <h4>Diagnoses</h4>
+
+        <div class="custom-table"> <table class="table table-striped">
+                   <thead>
+                       <tr>
+                           <th>Diagnose</th>
+                           <th>Issue Date</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr *ngFor="let diagnose of diagnosis">
+                           <td>{{ diagnose.diagnosis }}</td>
+                           <td>{{ diagnose.date }}</td>
+                       </tr>
+                   </tbody>
+               </table>
+           
+       </div> 
+
+    </div>               
+
+            
+            
         
-        </ng-container>
-      </div>
+<div class="section">
+
+    <h4>Prescriptions</h4>
+    <div class="custom-table">
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Prescription</th>
+                    <th>Dosage</th>
+                    <th>Issue Date</th>
+                    <th>Termination Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prescription of prescriptions">
+                    <td>{{ prescription.prescription }}</td>
+                    <td>{{ prescription.dosage }}</td>
+                    <td>{{ prescription.date }}</td>
+                    <td>{{ prescription.expiryDate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>     
 
 </div>
+            
+        
+   
+        
+</div>
+
