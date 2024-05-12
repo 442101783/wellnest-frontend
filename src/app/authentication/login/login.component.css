@@ -69,21 +69,15 @@ button[routerLink]:hover {
     text-align: center;
 }
 
-.eye-icon {
-    background: url('eye.svg') no-repeat;
-    background-size: contain;
+.bi-eye,
+.bi-eye-slash {
+    
+    color: black;
     width: 20px;
     height: 20px;
     cursor: pointer;
   }
   
-  .eye-slash-icon {
-    background: url('eye-slash.svg') no-repeat;
-    background-size: contain;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
 
   .password-input {
     padding-right: 30px;

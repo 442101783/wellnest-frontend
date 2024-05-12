@@ -1,0 +1,53 @@
+:host {
+    display: block;
+    width: 100%;
+  }
+
+.appointment-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+    }
+
+    .table-wrapper {
+        overflow-y: auto;  
+        height: 500px; 
+    }
+    
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    thead th {
+        position: sticky;
+        top: 0;
+        background-color: #f9f9f9;
+        
+    }
+    
+    tbody tr {
+        background-color: #fff;
+    }
+    
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }

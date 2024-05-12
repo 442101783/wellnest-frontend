@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Inject } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-diagnose-form',
@@ -21,7 +22,7 @@ import { Inject } from '@angular/core';
     </form>
     <div mat-dialog-actions>
       <button mat-button (click)="onCancel()">Cancel</button>
-      <button mat-button (click)="onSubmit()">Submit</button>
+      <button mat-button [disabled]="!form.valid"(click)="onSubmit()">Submit</button>
     </div>
   `
 })
@@ -34,7 +35,7 @@ export class DiagnoseFormComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.form = this.fb.group({
-      diagnosis: [''],
+      diagnosis: ['', Validators.required],
       status: ['temporary'],
       appid: [this.data.appid]
     });

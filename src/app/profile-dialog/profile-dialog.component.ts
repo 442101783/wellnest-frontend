@@ -20,7 +20,7 @@ export class ProfileDialogComponent implements OnInit{
   prescriptions: Prescription[] = [];
   diagnosis: Diagnosis[] = [];
   vitals: Vitals[] = [];
-
+  latestBloodType: string = ''; 
 
      constructor(
       private dialogRef: MatDialogRef<ProfileDialogComponent>,
@@ -45,10 +45,17 @@ export class ProfileDialogComponent implements OnInit{
             });
 
             this.patientService.getVitals(this.data.patientID).subscribe({
-              next: (vitals) => this.vitals = vitals,
+              next: (vitals) => {
+                
+                this.vitals = vitals
+                if (vitals.length > 0) {
+                  this.latestBloodType = vitals[vitals.length - 1].bloodType;
+                }
+              },
               error: (error) => console.error('Failed to fetch vitals', error)
         
             });
+
         }
     }
 

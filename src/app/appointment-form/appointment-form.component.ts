@@ -53,15 +53,12 @@ doctors: { id: string, name: string }[] = [];
   }
 
   bookAppointment(appointmentID: string): void {
-    this.appointmentService.addAppointment(appointmentID).subscribe({
+    this.appointmentService.addAppointment('', appointmentID).subscribe({
       next: () => {
-        // Handle response here, e.g., show a success message or update the view
         alert('Appointment booked successfully!');
-        // Optionally, you might want to remove the booked appointment from the list
         this.availableAppointments = this.availableAppointments.filter(appointment => appointment.appointmentID !== appointmentID);
       },
       error: (error) => {
-        // Handle errors here, e.g., show an error message
         console.error('Error booking appointment:', error);
         alert('Failed to book appointment.');
       }

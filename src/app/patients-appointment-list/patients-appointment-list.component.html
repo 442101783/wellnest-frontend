@@ -3,13 +3,14 @@
     <h3 class="mt-5 mb-3">Upcoming Appointments</h3>
     
     <div class="table">
-        <div class="table-wrapper">  <!-- Wrapper for scrolling -->
+        <div class="table-wrapper">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Time</th>
                 <th>Date</th>
                 <th>Patient</th>
+                <th></th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,14 +18,15 @@
             <tr *ngFor="let appointment of patientAppointments">
                 <td>{{appointment.time | convertTime}}</td>
                 <td>{{appointment.date}}</td>
-                <td>{{appointment.patientName | titlecase}} <button class="btn btn-sm btn-primary mx-1" (click)="openProfileDialog(appointment.patientID)">Profile <span class="bi bi-clipboard-pulse"></span></button></td>
+                <td>{{appointment.patientName | titlecase}} </td>
+                <td><button class="btn btn-sm btn-primary mx-1" (click)="openProfileDialog(appointment.patientID)">Profile <span class="bi bi-clipboard-pulse"></span></button></td>
 
                 <td>
 
                     
                     <button class="btn btn-sm btn-success mx-1" (click)="openDiagnoseDialog(appointment.appointmentID)">Diagnose <span class="bi bi-search-heart"></span></button>
                     <button class="btn btn-sm btn-success mx-1" [disabled]="!diagnosisSubmitted[appointment.appointmentID]" (click)="openPrescribeDialog(appointment.appointmentID) ">Prescribe <span class="bi bi-capsule"></span></button>
-                    <button class="btn btn-sm btn-dark mx-1" [disabled]="!diagnosisSubmitted[appointment.appointmentID]" (click)="reviewAppointment(appointment.patientID)" >New Appointment</button>
+                    <button class="btn btn-sm btn-dark mx-1" [disabled]="!diagnosisSubmitted[appointment.appointmentID]" (click)="openReviewDialog(appointment.patientID)" >New Appointment</button>
                     <button class="btn btn-sm btn-success mx-1" [disabled]="!diagnosisSubmitted[appointment.appointmentID]" (click)="endAppointment(appointment.appointmentID)" >End <span class="bi bi-check-circle"></span></button>
                     <button class="btn btn-sm btn-danger mx-1"><span class="bi bi-ban"></span></button>
 

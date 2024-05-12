@@ -35,8 +35,8 @@ getAvailableAppointments(doctorID:string): Observable<Appointment[]> {
 
 }
 
-addAppointment(appID:string): Observable<void>{
-  return this.http.post<void>(this.apiUrl+ "/selectAppointment", {"appID": appID})
+addAppointment(patientID:string, appID:string): Observable<void>{
+  return this.http.post<void>(this.apiUrl+ "/selectAppointment", {"patientID":patientID, "appID": appID})
 }
 
 deleteAppointment(appID:string): Observable<void>{

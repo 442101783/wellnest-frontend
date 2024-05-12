@@ -8,6 +8,7 @@ import { PrescribeFormComponent } from '../prescribe-form/prescribe-form.compone
 import { Diagnosis } from '../models/diagnosis';
 import { formatDate } from '@angular/common';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
+import { ReviewDialogComponent } from '../review-dialog/review-dialog.component';
 
 @Component({
   selector: 'app-patients-appointment-list',
@@ -122,7 +123,13 @@ openProfileDialog(patientID: string){
 
 }
 
-reviewAppointment(patientID:string){
+openReviewDialog(patientID: string){
+
+  const dialogRef = this.dialog.open(ReviewDialogComponent, {
+    width: '90vw',
+    height:'65vh',
+    data: { patientID: patientID }
+  });
 
 
 }

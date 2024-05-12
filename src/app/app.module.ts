@@ -25,6 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NurseHomePageComponent } from './nurse-home-page/nurse-home-page.component';
 import { VitalsFormComponent } from './vitals-form/vitals-form.component';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
+import { ReviewDialogComponent } from './review-dialog/review-dialog.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ProfileDialogComponent } from './profile-dialog/profile-dialog.componen
     PrescribeFormComponent,
     NurseHomePageComponent,
     VitalsFormComponent,
-    ProfileDialogComponent
+    ProfileDialogComponent,
+    ReviewDialogComponent
   
     
   ],

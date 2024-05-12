@@ -1,0 +1,26 @@
+
+
+
+    <div *ngIf="availableAppointments.length > 0" class="appointment-container">
+        <h3>Available Appointments</h3>
+        <div class="table-wrapper">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appointment of availableAppointments">
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="bookAppointment(this.data.patientID, appointment.appointmentID)">Book</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
