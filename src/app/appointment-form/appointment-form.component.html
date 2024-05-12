@@ -12,6 +12,7 @@
               <div class="form-group">
                   <label for="department">Choose a Department:</label>
                   <select id="department" class="form-control" formControlName="department" (change)="fetchDoctors()">
+                      <option value="">Select a department</option>
                       <option value="family">Family</option>
                       <option value="cardiology">Cardiology</option>
                       <option value="general">General</option>

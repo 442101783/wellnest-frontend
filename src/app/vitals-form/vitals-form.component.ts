@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'; 
 import { AppointmentService } from '../appointment/appointment.service';
 
@@ -8,7 +8,7 @@ import { AppointmentService } from '../appointment/appointment.service';
   templateUrl: './vitals-form.component.html',
   styleUrls: ['./vitals-form.component.css']
 })
-export class VitalsFormComponent {
+export class VitalsFormComponent implements OnInit {
   
   bloodType: string = '';
   bloodPressure: string = '';
@@ -28,13 +28,15 @@ export class VitalsFormComponent {
   ) {
     
     this.vitalForm = this.formBuilder.group({
-      phoneNumber: ['', Validators.required],
       bloodType: ['', Validators.required],
       bloodPressure: ['', [Validators.required, this.validateBloodPressure]],
-      temperature: ['', [Validators.required, Validators.min(20), Validators.max(45)]], // reasonable human body temperature range in Celsius
-      height: [null, [Validators.required, Validators.min(0.5), Validators.max(2.5)]], // height in meters
-      weight: [null, [Validators.required, Validators.min(5), Validators.max(300)]] // weight in kilograms
+      temperature: ['', [Validators.required, Validators.min(20), Validators.max(45)]], 
+      height: [null, [Validators.required, Validators.min(0.5), Validators.max(2.5)]], 
+      weight: [null, [Validators.required, Validators.min(5), Validators.max(300)]] 
     });
+    
+  }
+  ngOnInit(): void {
     
   }
 

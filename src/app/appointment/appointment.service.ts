@@ -74,6 +74,9 @@ addDiagnosis(diagnosisData: { diagnosis: string, appid: string, status: string }
 endAppointment(appID:string): Observable<void>{
   return this.http.post<void>(this.apiUrl+ "/endAppointment", {"appid": appID})
 }
+cancelAppointment(appID:string): Observable<void>{
+  return this.http.post<void>(this.apiUrl+ "/cancelAppointment", {"appid": appID})
+}
 
 addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: string , temprature: number , height: number , weight: number }): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}/addVitals`, vitalsData);
@@ -81,6 +84,10 @@ addVitals(vitalsData: { phoneNumber: string, bloodType: string, bloodPressure: s
 
 getPatient(patientID:string): Observable<Patient>{
   return this.http.post<Patient>(this.apiUrl+"/getPatient", {"patientID" : patientID})
+
+}
+getPatientName(phoneNumber:string): Observable<any>{
+  return this.http.post<any>(this.apiUrl+"/getName", {"phoneNumber" : phoneNumber})
 
 }
 

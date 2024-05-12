@@ -26,6 +26,8 @@ import { NurseHomePageComponent } from './nurse-home-page/nurse-home-page.compon
 import { VitalsFormComponent } from './vitals-form/vitals-form.component';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 import { ReviewDialogComponent } from './review-dialog/review-dialog.component';
+import { CancelConfirmationDialogComponent } from './cancel-confirmation-dialog/cancel-confirmation-dialog.component';
+import { EditAppointmentDialogComponent } from './edit-appointment-dialog/edit-appointment-dialog.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { ReviewDialogComponent } from './review-dialog/review-dialog.component';
     NurseHomePageComponent,
     VitalsFormComponent,
     ProfileDialogComponent,
-    ReviewDialogComponent
+    ReviewDialogComponent,
+    CancelConfirmationDialogComponent,
+    EditAppointmentDialogComponent
   
     
   ],

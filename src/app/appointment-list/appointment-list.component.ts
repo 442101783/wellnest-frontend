@@ -1,7 +1,8 @@
 import { AppointmentService } from './../appointment/appointment.service';
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../models/appointment';
-
+import { EditAppointmentDialogComponent } from '../edit-appointment-dialog/edit-appointment-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-appointment-list',
   templateUrl: './appointment-list.component.html',
@@ -12,7 +13,8 @@ export class AppointmentListComponent implements OnInit {
 appointments:Appointment[] = [];
 
 
-constructor(private appointmentService :AppointmentService){}
+constructor(private appointmentService :AppointmentService,
+  private dialog: MatDialog){}
   
 
 ngOnInit(): void {
@@ -22,12 +24,23 @@ ngOnInit(): void {
 
   }
 
-  editAppointment(doctorID:string, oldID:string){
 
-    
-
+  showAppointments(){
 
   }
+  
+
+  openEditDialog(doctorID:string,oldID: string){
+
+    const dialogRef = this.dialog.open(EditAppointmentDialogComponent, {
+      width: '90vw',
+      height:'85vh',
+      data: { doctorID:String ,oldID:String }
+    });
+  
+  
+  }
+
 
   deleteAppointment(appointmentID: string){
     this.appointmentService.deleteAppointment(appointmentID).subscribe({

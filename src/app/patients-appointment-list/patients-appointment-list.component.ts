@@ -9,7 +9,7 @@ import { Diagnosis } from '../models/diagnosis';
 import { formatDate } from '@angular/common';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
 import { ReviewDialogComponent } from '../review-dialog/review-dialog.component';
-
+import { CancelConfirmationDialogComponent } from '../cancel-confirmation-dialog/cancel-confirmation-dialog.component';
 @Component({
   selector: 'app-patients-appointment-list',
   templateUrl: './patients-appointment-list.component.html',
@@ -71,7 +71,6 @@ addPrescription(appointmentID: string, prescription: string, dosage: number, exp
   
   let formattedExpiryDate = '';
 
-  // Check if expiryDate is provided and is a valid date
   if (expiryDate) {
     try {
       formattedExpiryDate = formatDate(expiryDate, 'yyyy-MM-dd', 'en-US');
@@ -109,6 +108,29 @@ endAppointment(appointmentID: string){
   this.appointmentService.endAppointment(appointmentID).subscribe({
     next: () => console.log('Appointment ended successfully'),
     error: (error) => console.error('Error ending appointment:', error)
+  });
+}
+
+
+
+
+
+cancelAppointmentConfirmation(appointmentID: string): void {
+  const dialogRef = this.dialog.open(CancelConfirmationDialogComponent , {
+    width: '300px',
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {
+      this.cancelAppointment(appointmentID);
+    }
+  });
+}
+
+cancelAppointment(appointmentID: string){
+  this.appointmentService.cancelAppointment(appointmentID).subscribe({
+    next: () => console.log('Appointment canceled successfully'),
+    error: (error) => console.error('Error canceling appointment:', error)
   });
 }
 
