@@ -6,18 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
   
-  // Declare a boolean variable to track if the login component is open
-  isLoginOpen: boolean = false;
-
-  // Function to close the login component and remove the blur effect
-  closeLogin() {
-      this.isLoginOpen = false;
-  }
-
-  // Function to open the login component and apply the blur effect
-  openLogin() {
-      this.isLoginOpen = true;
-  }
 
   constructor() { }
 

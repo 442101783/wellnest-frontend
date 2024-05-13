@@ -16,8 +16,7 @@
 
 .row {
   display: flex;
-  flex-wrap: wrap; /* Allows content to wrap on smaller screens */
-  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .info-section {
@@ -29,20 +28,21 @@
 
 .vitals-section {
   flex: 3; /* Takes up more space */
-  padding: 10px;
+ 
   border: 1px solid #ddd;
   border-radius: 8px;
 }
 
 .section {
   margin-right: 20px;
-  margin-bottom: 5px;
   border-bottom: 3px solid black;
+  height: 250px;
+  max-height: 250px;
 }
 
 .custom-table {
   overflow-y: auto;
-  max-height: 220px;
+  max-height: 200px;
   
 }
 
@@ -67,18 +67,14 @@ tbody tr {
   background-color: #fff;
 }
 
-/* Responsive adjustments might be needed for smaller screens */
+tbody{}
 @media (max-width: 768px) {
   .row {
       flex-direction: column;
   }
 
   .section {
-      margin-right: 0; /* Remove margin between sections on small screens */
+      margin-right: 0; 
   }
 }
 
-.h4{
-
-  border-bottom: 3px solid black;
-}

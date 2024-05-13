@@ -128,7 +128,7 @@ cancelAppointmentConfirmation(appointmentID: string): void {
 }
 
 cancelAppointment(appointmentID: string){
-  this.appointmentService.cancelAppointment(appointmentID).subscribe({
+  this.appointmentService.missedAppointment(appointmentID).subscribe({
     next: () => console.log('Appointment canceled successfully'),
     error: (error) => console.error('Error canceling appointment:', error)
   });

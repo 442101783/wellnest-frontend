@@ -28,6 +28,7 @@ export class VitalsFormComponent implements OnInit {
   ) {
     
     this.vitalForm = this.formBuilder.group({
+      phoneNumber:'',
       bloodType: ['', Validators.required],
       bloodPressure: ['', [Validators.required, this.validateBloodPressure]],
       temperature: ['', [Validators.required, Validators.min(20), Validators.max(45)]], 
@@ -61,10 +62,25 @@ export class VitalsFormComponent implements OnInit {
   
   
   validateBloodPressure(control: AbstractControl) {
-    const bloodPressurePattern = /^\d{1,3}\/\d{1,3}$/; // Example pattern: 120/80
+    const bloodPressurePattern = /^\d{1,3}\/\d{1,3}$/;
     if (!bloodPressurePattern.test(control.value)) {
       return { invalidBloodPressure: true };
     }
     return null;
+  }
+
+  validateInput(event: KeyboardEvent): void {
+    const inputValue: string = (event.target as HTMLInputElement).value;
+    const allowedChars = /^[0-9.]*$/; // Allow digits and period
+    const specialKeys: Array<string> = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight'];
+
+    if (specialKeys.indexOf(event.key) !== -1 || (allowedChars.test(event.key))) {
+      if (event.key === '.') {
+        if (inputValue.length !== 1 || inputValue.indexOf('.') !== -1) { 
+        }
+      }
+    } else {
+      event.preventDefault();
+    }
   }
 }

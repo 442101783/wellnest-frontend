@@ -23,13 +23,13 @@ export class EditAppointmentDialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<EditAppointmentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {doctorID:string,oldID:string},
+    @Inject(MAT_DIALOG_DATA) public data: {doctorID:string, oldID:string},
     private appointmentService: AppointmentService) {}
 
 
     ngOnInit(): void {
       if (this.data.doctorID) {
-
+console.log(this.data.doctorID)
       this.appointmentService.getAvailableAppointments(this.data.doctorID)
         .subscribe((appointments: Appointment[]) => {
           this.availableAppointments = appointments;

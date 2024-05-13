@@ -3,13 +3,13 @@
     <div class="row">
         <div class="section info-section">
             <h4>Information</h4>
-            <div class="custom-table">
+            <div class="custom-info-table">
                 
                 <p><strong>Name:</strong> {{ patient.fname | titlecase }} {{ patient.lname | titlecase }}</p>
                 <p><strong>DOB:</strong> {{ patient.dob | date }}</p>
                 <p><strong>Age:</strong> {{ patient.age }}</p>
                 <p><strong>Gender:</strong> {{ patient.gender | titlecase }}</p>
-                <p><strong>Blood Type:</strong> {{ latestBloodType }}</p>
+                <p><strong>Blood Type:</strong> {{ patient.bloodType }}</p>
 
     
             </div>        

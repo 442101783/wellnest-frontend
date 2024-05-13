@@ -33,9 +33,9 @@ ngOnInit(): void {
   openEditDialog(doctorID:string,oldID: string){
 
     const dialogRef = this.dialog.open(EditAppointmentDialogComponent, {
-      width: '90vw',
-      height:'85vh',
-      data: { doctorID:String ,oldID:String }
+      width: '60vw',
+      height:'40vh',
+      data: { doctorID: doctorID, oldID: oldID}
     });
   
   

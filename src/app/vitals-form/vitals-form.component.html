@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Patient Vitals</h2>
+<h2 mat-dialog-title>Add Patient Vitals for {{this.data.patientName}}, (Last Reading: {{this.data.date}})</h2>
 <mat-dialog-content class="dialog-content">
   <form [formGroup]="vitalForm">
     
@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Blood Pressure</mat-label>
-      <input matInput formControlName="bloodPressure" placeholder="Enter Blood Pressure">
+      <input matInput formControlName="bloodPressure" placeholder="Enter Blood Pressure" (keydown)="validateInput($event)">
       <mat-error *ngIf="vitalForm.get('bloodPressure')?.hasError">Blood Pressure is required - Format:(Number/Number)</mat-error>
     </mat-form-field>
 

@@ -23,7 +23,7 @@ export class NurseHomePageComponent {
         if (response && response.name) {
           const dialogRef = this.dialog.open(VitalsFormComponent, {
             width: '800px',
-            data: { patientName: response.name }
+            data: {phoneNumber: patientPhoneNumber, patientName: response.name, bloodType: response.bloodType, date: response.date }
           });
 
           dialogRef.afterClosed().subscribe(result => {
