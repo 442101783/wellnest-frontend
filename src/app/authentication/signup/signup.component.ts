@@ -20,8 +20,6 @@ export class SignupComponent implements OnInit {
  
  ngOnInit(): void {
 
-  //password > 8 letters
-  //contain capital,number,small,sympol
   this.signupForm = this.formBuilder.group({
     fname:['',Validators.required],
     lname:['',Validators.required],

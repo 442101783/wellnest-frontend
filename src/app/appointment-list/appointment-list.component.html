@@ -24,7 +24,7 @@
                     <td>{{appointment.appStatus | titlecase}}</td>
                     <td>
                         <button *ngIf="appointment.appStatus == 'upcoming'" class="btn btn-sm btn-secondary mx-1" (click)="openEditDialog(appointment.doctorID, appointment.appointmentID)">Edit</button>
-                        <button *ngIf="appointment.appStatus == 'upcoming'" class="bi bi-trash3-fill mx-1" (click)="deleteAppointment(appointment.appointmentID)"></button>
+                        <button *ngIf="appointment.appStatus == 'upcoming'" class="bi bi-trash3-fill mx-1" (click)="deleteAppointmentConfirmation(appointment.appointmentID)"></button>
                     </td>
                 </tr>
             </tbody>

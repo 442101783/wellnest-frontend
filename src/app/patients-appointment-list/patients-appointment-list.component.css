@@ -22,8 +22,8 @@
 }
 
 .table-wrapper {
-    overflow-y: auto;  /* Enables vertical scrolling */
-    height: 500px;  /* Fixed height to force scroll */
+    overflow-y: auto;
+    height: 500px;
 }
 
 .table {

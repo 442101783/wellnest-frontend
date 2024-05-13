@@ -30,6 +30,8 @@ import { CancelConfirmationDialogComponent } from './cancel-confirmation-dialog/
 import { EditAppointmentDialogComponent } from './edit-appointment-dialog/edit-appointment-dialog.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { EditAppointmentDialogComponent } from './edit-appointment-dialog/edit-a
     ReviewDialogComponent,
     CancelConfirmationDialogComponent,
     EditAppointmentDialogComponent
+
   
     
   ],

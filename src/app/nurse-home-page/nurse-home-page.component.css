@@ -70,25 +70,25 @@
     padding: 20px;
     border-radius: 12px;
     overflow: hidden;
-    width: 50%;  /* Adjusted width */
+    width: 50%;
     flex-direction: column;
-    gap: 20px;  /* Space between inputs */
+    gap: 20px;
   }
   
   .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 15px; /* Space between form groups */
+    margin-bottom: 15px;
 }
 
 .label {
-    flex: 0 0 200px; /* Fixed width for labels */
-    margin-right: 10px; /* Space between label and input */
-    text-align: right; /* Right-align text to line up with input fields */
+    flex: 0 0 200px; 
+    margin-right: 10px; 
+    text-align: right; 
 }
 
 .form-input {
-    flex: 1; /* Takes up the rest of the flex container */
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;

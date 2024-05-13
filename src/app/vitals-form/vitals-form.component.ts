@@ -24,11 +24,12 @@ export class VitalsFormComponent implements OnInit {
     public dialogRef: MatDialogRef<VitalsFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private vitalService: AppointmentService 
+    private vitalService: AppointmentService,
+    
   ) {
     
     this.vitalForm = this.formBuilder.group({
-      phoneNumber:'',
+      phoneNumber: this.data.phoneNumber,
       bloodType: ['', Validators.required],
       bloodPressure: ['', [Validators.required, this.validateBloodPressure]],
       temperature: ['', [Validators.required, Validators.min(20), Validators.max(45)]], 
@@ -71,7 +72,7 @@ export class VitalsFormComponent implements OnInit {
 
   validateInput(event: KeyboardEvent): void {
     const inputValue: string = (event.target as HTMLInputElement).value;
-    const allowedChars = /^[0-9.]*$/; // Allow digits and period
+    const allowedChars = /^[0-9.]*$/;
     const specialKeys: Array<string> = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight'];
 
     if (specialKeys.indexOf(event.key) !== -1 || (allowedChars.test(event.key))) {

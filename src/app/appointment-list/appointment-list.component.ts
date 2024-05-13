@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../models/appointment';
 import { EditAppointmentDialogComponent } from '../edit-appointment-dialog/edit-appointment-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CancelConfirmationDialogComponent } from '../cancel-confirmation-dialog/cancel-confirmation-dialog.component';
 @Component({
   selector: 'app-appointment-list',
   templateUrl: './appointment-list.component.html',
@@ -42,11 +43,15 @@ ngOnInit(): void {
   }
 
 
-  deleteAppointment(appointmentID: string){
-    this.appointmentService.deleteAppointment(appointmentID).subscribe({
-      next: () => console.log('Appointment deleted successfully'),
-      error: (error) => console.error('Error deleting appointment:', error)
+  deleteAppointmentConfirmation(appointmentID: string): void {
+    const dialogRef = this.dialog.open(CancelConfirmationDialogComponent , {
+      width: '300px',
     });
-
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.appointmentService.deleteAppointment(appointmentID).subscribe({});
+      }
+    });
   }
 }

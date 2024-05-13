@@ -16,19 +16,19 @@
   border-radius: 12px;
   overflow: hidden;
   width: 70%;
-  height: 380px;  /* Adjust if necessary */
+  height: 380px;
   margin: 0 auto; 
   flex-direction: column; 
 }
 
 .custom-table {
-  overflow-y: auto;  /* Enables scrolling */
-  max-height: 270px;  /* Adjust based on the available space */
+  overflow-y: auto;
+  max-height: 270px;
 }
 
 .table {
   width: 100%;
-  border-collapse: collapse; /* For better border handling */
+  border-collapse: collapse;
 }
 
 th, td {
@@ -41,32 +41,32 @@ thead th {
   position: sticky;
   top: 0;
   background-color: #f9f9f9;
-  z-index: 10;  /* Ensures the header is above other content */
+  z-index: 10;
 }
 
 .tab-bar {
-  display: flex; /* Using flex to evenly space out tabs */
-  justify-content: left; /* Center align the tabs */
+  display: flex;
+  justify-content: left;
   }
 
 .tab-bar button {
-  flex-grow: 1; /* Each button grows equally */
-  padding: 10px 0; /* Padding adjusted for better vertical alignment */
-  background-color: #eeeeee; /* Lighter grey background for tabs */
-  border: 1px solid #ddd; /* Subtle border for definition */
-  border-radius: 5px 5px 0 0; /* Rounded top corners */
+  flex-grow: 1;
+  padding: 10px 0;
+  background-color: #eeeeee;
+  border: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover and focus */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .tab-bar button:hover {
-  background-color: #ddd; /* Darker shade on hover */
-  color: #333; /* Darker text color for better contrast */
+  background-color: #ddd;
+  color: #333;
 }
 
 .tab-bar button.active, .tab-bar button:focus {
-  background-color: #fff; /* Active tab matches the container background */
-  border-bottom: 1px solid #fff; /* Hide bottom border to merge with content box */
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
 }
 
 .content {

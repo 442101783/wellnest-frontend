@@ -26,13 +26,13 @@
 }
 
 .table-wrapper {
-    overflow-y: auto;  /* Enables vertical scrolling */
-    height: 270px;  /* Fixed height to force scroll */
+    overflow-y: auto; 
+    height: 270px; 
 }
 
 .table {
     width: 100%;
-    border-collapse: collapse; /* Collapse borders */
+    border-collapse: collapse;
 }
 
 th, td {
@@ -55,9 +55,9 @@ tbody tr {
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Aligns items vertically in the center */
-    width: 100%; /* Ensures the header fills the container width */
-    margin-bottom: 20px; /* Space between header and table */
+    align-items: center; 
+    width: 100%; 
+    margin-bottom: 20px; 
 }
 
 .btn-dark {

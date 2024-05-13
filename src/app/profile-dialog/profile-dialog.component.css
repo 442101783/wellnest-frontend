@@ -20,14 +20,14 @@
 }
 
 .info-section {
-  flex: 1; /* Takes up less space */
+  flex: 1;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
 }
 
 .vitals-section {
-  flex: 3; /* Takes up more space */
+  flex: 3;
  
   border: 1px solid #ddd;
   border-radius: 8px;
