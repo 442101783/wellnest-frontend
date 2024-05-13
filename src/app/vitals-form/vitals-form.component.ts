@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'; 
 import { AppointmentService } from '../appointment/appointment.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-vitals-form',
@@ -25,12 +26,13 @@ export class VitalsFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private vitalService: AppointmentService,
+    private snackBar: MatSnackBar
     
   ) {
     
     this.vitalForm = this.formBuilder.group({
       phoneNumber: this.data.phoneNumber,
-      bloodType: ['', Validators.required],
+      bloodType: [{value: this.data.bloodType || '', disabled: !!this.data.bloodType}],
       bloodPressure: ['', [Validators.required, this.validateBloodPressure]],
       temperature: ['', [Validators.required, Validators.min(20), Validators.max(45)]], 
       height: [null, [Validators.required, Validators.min(0.5), Validators.max(2.5)]], 
@@ -47,10 +49,16 @@ export class VitalsFormComponent implements OnInit {
     if (this.vitalForm.valid) {
       this.vitalService.addVitals(this.vitalForm.value).subscribe({
         next: (response) => {
+          this.snackBar.open('Added Vitals successfully.', 'Close', {
+            duration: 5000
+          });
           this.dialogRef.close();
         },
         error: (err) => {
           console.error('Error submitting vitals:', err);
+          this.snackBar.open('Failed to add vitals.', 'Close', {
+            duration: 5000
+          });
         }
       });
     }

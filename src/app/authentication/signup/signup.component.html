@@ -11,13 +11,13 @@
         <div class="col-md-6 mb-3">
             <label class="form-label">First Name</label>
             <input class="form-control my-2" type="text" formControlName="fname" (keydown)="onNameKeyDown($event)">
-            <small class="text-danger" *ngIf="signupForm.get('fname')?.invalid && signupForm.get('fname')?.touched">First Name is required.</small>
+            <small class="text-danger" *ngIf="signupForm.get('fname')?.invalid && signupForm.get('fname')?.touched">First name is required and must not exceed 12 letters.</small>
         </div>
 
         <div class="col-md-6 mb-3">
             <label class="form-label">Last Name</label>
             <input class="form-control my-2" type="text" formControlName="lname" (keydown)="onNameKeyDown($event)">
-            <small class="text-danger" *ngIf="signupForm.get('lname')?.invalid && signupForm.get('lname')?.touched">Last Name is required.</small>
+            <small class="text-danger" *ngIf="signupForm.get('lname')?.invalid && signupForm.get('lname')?.touched">Last name is required and must not exceed 12 letters.</small>
         </div>
         </div>
 
@@ -54,7 +54,7 @@
         <div class="col-md-6 mb-3">
             <label class="form-label">Password</label>
             <input class="form-control my-2" type="password" formControlName="password">
-            <small class="text-danger" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">Password is required and must meet the specified criteria.</small>
+            <small class="text-danger" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">Password must be of length (8-20) and contain: upper case, lower case, digit, and special characters "@", "#", "&", ".".</small>
         </div>
 
         <div class="col-md-6 mb-3">

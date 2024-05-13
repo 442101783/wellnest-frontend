@@ -4,6 +4,7 @@ import { AppointmentService } from '../appointment/appointment.service';
 import { Appointment } from '../models/appointment';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Doctor } from '../models/doctor';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-appointment-form',
   templateUrl: './appointment-form.component.html',
@@ -17,7 +18,8 @@ doctors: { id: string, name: string }[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private appointmentService: AppointmentService
+    private appointmentService: AppointmentService,
+    private snackBar:MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -55,12 +57,17 @@ doctors: { id: string, name: string }[] = [];
   bookAppointment(appointmentID: string): void {
     this.appointmentService.addAppointment('', appointmentID).subscribe({
       next: () => {
-        alert('Appointment booked successfully!');
+        this.snackBar.open('Appointment booked successfully!', 'Close',{
+          duration: 5000
+        });
         this.availableAppointments = this.availableAppointments.filter(appointment => appointment.appointmentID !== appointmentID);
+        window.location.reload();
       },
       error: (error) => {
         console.error('Error booking appointment:', error);
-        alert('Failed to book appointment.');
+        this.snackBar.open('Failed to book appointment.', 'Close',{
+          duration: 5000
+        });
       }
     });
   }

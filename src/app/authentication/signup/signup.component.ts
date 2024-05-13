@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators,AbstractControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,13 +17,15 @@ export class SignupComponent implements OnInit {
  constructor(private formBuilder:FormBuilder,
   private authenticationService:AuthenticationService,
   private router:Router,
-  private activatedRoute:ActivatedRoute){}
+  private activatedRoute:ActivatedRoute,
+  private snackBar: MatSnackBar
+){}
  
  ngOnInit(): void {
 
   this.signupForm = this.formBuilder.group({
-    fname:['',Validators.required],
-    lname:['',Validators.required],
+    fname:['', [Validators.required, Validators.maxLength(12)]],
+    lname:['',[Validators.required, Validators.maxLength(12)]],
     phoneNumber:['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     password:['',[Validators.required,Validators.minLength(8),this.checkPassword()]],
     confirmPassword:['',[Validators.required,Validators.minLength(8),this.passwordMatchValidator()]],
@@ -86,17 +89,20 @@ onNameKeyDown(event: KeyboardEvent) {
     const value = control.value;
     const hasCapital = /[A-Z]/.test(value);
     const hasSmall = /[a-z]/.test(value);
-    const hasSymbol = /[$@$!%*?&]/.test(value);
-    const isLengthValid = value && value.length >= 8;
+    const hasSymbol = /[@#&.]/.test(value);
+    const isLengthValid = value && value.length >= 8 && value.length <= 20;
      
 
     if (!hasCapital) {
-      return { missingCapital: true, message: 'Password must contain at least one capital letter.' };
-    } else if (!hasSmall) {
-      return { missingSmall: true, message: 'Password must contain at least one small letter.' };
-    } else if (!hasSymbol) {
-      return { missingSymbol: true, message: 'Password must contain at least one symbol.' };
-    } else if (!isLengthValid) {
+      return { missingCapital: true, message: 'Password must contain at least one capital letter.' };} 
+      
+      if (!hasSmall) {
+      return { missingSmall: true, message: 'Password must contain at least one small letter.' };}  
+      
+      if (!hasSymbol) {
+      return { missingSymbol: true, message: 'Password must contain at least one symbol.' };}  
+      
+      if (!isLengthValid) {
       return { minLength: true, message: 'Password must be at least 8 characters long.' };
     }
 
@@ -108,7 +114,9 @@ onNameKeyDown(event: KeyboardEvent) {
    onSubmit(){
     if(this.signupForm.valid){
 
-      console.log("valid form")
+      this.snackBar.open("Sign up successful", 'Close', {
+        duration: 5000
+      })
       var formData = this.signupForm.value;
       var data = {
        fname: formData.fname,
@@ -122,12 +130,13 @@ onNameKeyDown(event: KeyboardEvent) {
 
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (regex.test(formData.password)) {
-       console.log('Password meets the criteria.');
-       alert("sign up successful")
-       this.authenticationService.signup(JSON.stringify(data)).subscribe((response:any)=>{
-        this.responseMessage = response?.message;
-        this.router.navigate([''])
+       this.authenticationService.signup(JSON.stringify(data)).subscribe({
+        next: () => this.router.navigate(['']),
+        error: () =>   this.snackBar.open('Phone number already exists.', 'Close', {
+          duration: 5000
+        })
        })
+      }
        
 
 
@@ -139,4 +148,4 @@ onNameKeyDown(event: KeyboardEvent) {
   }
 
   
-}
+

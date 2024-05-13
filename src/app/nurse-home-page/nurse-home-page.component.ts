@@ -3,7 +3,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 import { MatDialog } from '@angular/material/dialog';
 import { VitalsFormComponent } from '../vitals-form/vitals-form.component';
 import { AppointmentService } from '../appointment/appointment.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-nurse-home-page',
   templateUrl: './nurse-home-page.component.html',
@@ -14,9 +14,24 @@ export class NurseHomePageComponent {
   constructor(
     private authService: AuthenticationService,
     private dialog: MatDialog,
-    private nurseService: AppointmentService
+    private nurseService: AppointmentService,
+    private snackBar: MatSnackBar
   ) {}
 
+  validatePhoneNumber(event: KeyboardEvent): void {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'];
+    if (!allowedKeys.includes(event.key) && !(/\d/.test(event.key))) {
+      event.preventDefault();
+    }
+  }
+  
+  formatPhoneNumber(inputElement: HTMLInputElement): void {
+    let value = inputElement.value;
+    if (value && !value.startsWith('05')) {
+      value = '05' + value.slice(2);
+    }
+    inputElement.value = value.slice(0, 10);
+  }
   openDialog(patientPhoneNumber: string): void {
     this.nurseService.getPatientName(patientPhoneNumber).subscribe({
       next: (response) => {
@@ -33,8 +48,10 @@ export class NurseHomePageComponent {
         }
       },
       error: (err) => {
-        alert("invalid number")
         console.error('Error retrieving patient name:', err);
+        this.snackBar.open('Invalid phone number.', 'Close', {
+          duration: 5000
+        });
       }
     });
   }

@@ -26,7 +26,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     </form>
     <div mat-dialog-actions>
       <button mat-button (click)="onCancel()">Cancel</button>
-      <button mat-button (click)="onSubmit()">Submit</button>
+      <button mat-button (click)="onSubmit()" >Submit</button>
     </div>
   `
 })

@@ -4,6 +4,8 @@ import { Appointment } from '../models/appointment';
 import { EditAppointmentDialogComponent } from '../edit-appointment-dialog/edit-appointment-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CancelConfirmationDialogComponent } from '../cancel-confirmation-dialog/cancel-confirmation-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-appointment-list',
   templateUrl: './appointment-list.component.html',
@@ -15,7 +17,10 @@ appointments:Appointment[] = [];
 
 
 constructor(private appointmentService :AppointmentService,
-  private dialog: MatDialog){}
+  private dialog: MatDialog,
+private snackBar: MatSnackBar,
+private router: Router
+){}
   
 
 ngOnInit(): void {
@@ -50,7 +55,22 @@ ngOnInit(): void {
   
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.appointmentService.deleteAppointment(appointmentID).subscribe({});
+        this.appointmentService.deleteAppointment(appointmentID).subscribe({
+          next:() => {
+            this.snackBar.open('Appointment canceled successfully.', 'Close',{
+              duration: 5000
+            })
+window.location.reload();
+
+          },
+
+          error:() => {
+            this.snackBar.open('Failed to cancel appointment.', 'Close',{
+              duration: 5000
+            })
+          }
+        });
+       
       }
     });
   }

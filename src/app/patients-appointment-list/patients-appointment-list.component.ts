@@ -10,6 +10,10 @@ import { formatDate } from '@angular/common';
 import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
 import { ReviewDialogComponent } from '../review-dialog/review-dialog.component';
 import { CancelConfirmationDialogComponent } from '../cancel-confirmation-dialog/cancel-confirmation-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { EndConfirmationDialogComponent } from '../end-confirmation-dialog/end-confirmation-dialog.component';
+
 @Component({
   selector: 'app-patients-appointment-list',
   templateUrl: './patients-appointment-list.component.html',
@@ -22,7 +26,8 @@ export class PatientsAppointmentListComponent {
     
     constructor(
       private dialog: MatDialog,
-      private appointmentService :AppointmentService
+      private appointmentService :AppointmentService,
+      private snackBar: MatSnackBar
     ){}
       
     openDiagnoseDialog(appointmentID: string): void {
@@ -48,8 +53,15 @@ export class PatientsAppointmentListComponent {
   };
 
   this.appointmentService.addDiagnosis(diagnosisData).subscribe({
-    next: () => alert('Diagnosis added successfully!'),
-    error: () => alert('Failed to add diagnosis')
+    next: () => {this.snackBar.open('Diagnosis added successfully!', 'Close',{
+      duration: 5000
+    });
+  
+  },
+    error: () =>this.snackBar.open('Failed to add diagnosis.', 'Close', {
+      duration: 5000
+    })
+    
   });
 }
 
@@ -88,8 +100,12 @@ addPrescription(appointmentID: string, prescription: string, dosage: number, exp
     expiryDate: formattedExpiryDate
   };
   this.appointmentService.addPrescriptions(prescriptionData).subscribe({
-    next: () => alert('Prescription added successfully!'),
-    error: () => alert('Failed to add prescription')
+    next: () => this.snackBar.open('Prescription added successfully!', 'Close',{
+      duration: 5000
+    }),
+    error: () => this.snackBar.open('Failed to add prescription', 'Close', {
+      duration: 5000
+    })
   });
 }
     ngOnInit(): void {
@@ -106,7 +122,12 @@ addPrescription(appointmentID: string, prescription: string, dosage: number, exp
 
 endAppointment(appointmentID: string){
   this.appointmentService.endAppointment(appointmentID).subscribe({
-    next: () => console.log('Appointment ended successfully'),
+    next: () => {this.snackBar.open('Appointment ended successfully', 'Close', {
+      duration: 5000
+    })
+
+    window.location.reload();
+  },
     error: (error) => console.error('Error ending appointment:', error)
   });
 }
@@ -129,7 +150,13 @@ cancelAppointmentConfirmation(appointmentID: string): void {
 
 cancelAppointment(appointmentID: string){
   this.appointmentService.missedAppointment(appointmentID).subscribe({
-    next: () => console.log('Appointment canceled successfully'),
+    next: () => {this.snackBar.open('Appointment canceled successfully', 'Close', {
+      duration: 5000,
+    });
+
+    window.location.reload();
+  },
+
     error: (error) => console.error('Error canceling appointment:', error)
   });
 }
@@ -154,6 +181,18 @@ openReviewDialog(patientID: string){
   });
 
 
+}
+
+endAppointmentConfirmation(appointmentID: string): void {
+  const dialogRef = this.dialog.open(EndConfirmationDialogComponent , {
+    width: '300px',
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {
+      this.endAppointment(appointmentID);
+    }
+  });
 }
 
 }

@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
 import { Patient } from '../models/patient';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthenticationService {
   private jwtHelper: JwtHelperService = new JwtHelperService();
   private users: User[] = [];
 
-constructor(private http:HttpClient,private router: Router){
+constructor(private http:HttpClient,private router: Router, private snackBar: MatSnackBar){
 }
 
 signup(s : string): Observable<any> {
@@ -41,11 +42,15 @@ handleLogin(credentials: {phoneNumber: string; password: string}){
         this.router.navigate(['/doctor-page']);
       } else if (response && response.role === 'nurse'){
         this.router.navigate(['/nurse-page']);
-      } else{
-      console.log("failed to log in")
-      alert("failed to login")
-    }
+      }
+
       
+    },
+    error: () =>{
+
+      this.snackBar.open('Wrong phone number or password.', 'Close', {
+        duration: 5000}
+      )
     }
   })
 }

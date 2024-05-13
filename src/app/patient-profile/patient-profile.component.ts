@@ -12,7 +12,7 @@ import { Vitals } from '../models/vitals';
 })
 export class PatientProfileComponent implements OnInit{
   
-  activeTab = 'medications';
+  activeTab = 'info';
   
 
   setActiveTab(tab: string): void {

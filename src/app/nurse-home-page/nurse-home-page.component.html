@@ -12,7 +12,7 @@
     
 
     <div class="nurse-container">
-        <input #phoneNumberInput type="text" placeholder="Enter Patient Phone Number">
+        <input #phoneNumberInput  (keydown)="validatePhoneNumber($event)"  (input)="formatPhoneNumber(phoneNumberInput)" type="text" placeholder="Enter Patient Phone Number">
         <button mat-raised-button (click)="openDialog(phoneNumberInput.value)" class="button">Enter</button>
       </div>
       

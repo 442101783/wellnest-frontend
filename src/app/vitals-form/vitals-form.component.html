@@ -10,7 +10,6 @@
       <mat-select formControlName="bloodType" placeholder="Select Blood Type">
         <mat-option *ngFor="let type of bloodTypes" [value]="type">{{ type }}</mat-option>
       </mat-select>
-      <mat-error *ngIf="vitalForm.get('bloodType')?.hasError">Blood Type is required</mat-error>
     </mat-form-field>
 
 
@@ -38,5 +37,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="closeDialog()">Cancel</button>
-  <button mat-button color="primary" (click)="addVitals()" [disabled]="!vitalForm.valid">Submit Vitals</button>
+  <button mat-button color="primary" (click)="addVitals()" [disabled]="!vitalForm.valid">Submit</button>
 </mat-dialog-actions>

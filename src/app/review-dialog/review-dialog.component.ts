@@ -3,6 +3,9 @@ import { AppointmentService } from '../appointment/appointment.service';
 import { Appointment } from '../models/appointment';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 
 @Component({
@@ -19,7 +22,9 @@ export class ReviewDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<ReviewDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { patientID: string },
-    private appointmentService: AppointmentService) {}
+    private appointmentService: AppointmentService,
+  private snackBar: MatSnackBar
+  ) {}
 
 
     ngOnInit(): void {
@@ -34,12 +39,16 @@ export class ReviewDialogComponent {
       }}
   bookAppointment(patientID:string, appointmentID: string): void {
     this.appointmentService.addAppointment(patientID, appointmentID).subscribe({      next: () => {
-      alert('Appointment booked successfully!');
+      this.snackBar.open('Appointment booked successfully!', 'Close',{
+        duration: 5000
+      });
       this.availableAppointments = this.availableAppointments.filter(appointment => appointment.appointmentID !== appointmentID);
     },
     error: (error) => {
       console.error('Error booking appointment:', error);
-      alert('Failed to book appointment.');
+      this.snackBar.open('Failed to book appointment.', 'Close',{
+        duration: 5000
+      });
     }
     });
   }

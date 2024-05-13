@@ -28,6 +28,9 @@ import { ProfileDialogComponent } from './profile-dialog/profile-dialog.componen
 import { ReviewDialogComponent } from './review-dialog/review-dialog.component';
 import { CancelConfirmationDialogComponent } from './cancel-confirmation-dialog/cancel-confirmation-dialog.component';
 import { EditAppointmentDialogComponent } from './edit-appointment-dialog/edit-appointment-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+import { EndConfirmationDialogComponent } from './end-confirmation-dialog/end-confirmation-dialog.component';
 
 
 
@@ -42,7 +45,8 @@ import { EditAppointmentDialogComponent } from './edit-appointment-dialog/edit-a
     ProfileDialogComponent,
     ReviewDialogComponent,
     CancelConfirmationDialogComponent,
-    EditAppointmentDialogComponent
+    EditAppointmentDialogComponent,
+    EndConfirmationDialogComponent
 
   
     
@@ -63,7 +67,9 @@ import { EditAppointmentDialogComponent } from './edit-appointment-dialog/edit-a
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule,
+    CommonModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi:true}
