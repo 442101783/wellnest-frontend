@@ -41,7 +41,7 @@ export class VitalsFormComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    
+ 
   }
 
   addVitals(): void {

@@ -19,7 +19,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="expiryPicker" placeholder="Expiry Date" formControlName="expiryDate">
+        <input matInput [matDatepicker]="expiryPicker" placeholder="Termination Date" formControlName="expiryDate">
         <mat-datepicker-toggle matSuffix [for]="expiryPicker"></mat-datepicker-toggle>
         <mat-datepicker #expiryPicker></mat-datepicker>
       </mat-form-field>
